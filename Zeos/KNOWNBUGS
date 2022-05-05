@@ -1,0 +1,5 @@
+K N O W N    B U G S
+====================
+
+1. Because of the limitations of MSSQL dblibrary only the first 255 characters are returned for char and varchar columns.
+2. Problems with conversion Variant to Int64 in CBuilder.

@@ -1,0 +1,225 @@
+Classes
+	TOutPut
+		Procedimentos
+			Write (String) 
+			Show
+		TwsOutPut
+			Procedimentos
+				Write (String) 
+				Show
+	TStringList
+		Funções
+			GetString (Integer) : String
+			Count: Integer
+		Procedimentos
+			SetString (Integer, String) 
+			LoadFromFile (String) 
+			SaveToFile (String) 
+	TwsMatrix
+		Funções
+			GetData (Integer, Integer) : Real
+			Power (Integer, Integer) : Object <TwsGeneral>
+		Procedimentos
+			Print (Object <TOutPut>) 
+			SetData (Integer, Integer, Real) 
+		TwsGeneral
+			Funções
+				GetData (Integer, Integer) : Real
+				Power (Integer, Integer) : Object <TwsGeneral>
+			Procedimentos
+				Print (Object <TOutPut>) 
+				SetData (Integer, Integer, Real) 
+	TwsVec
+		Funções
+			GetData (Integer) : Real
+			IsMissValue (Integer, Real) : Boolean
+			GetLen: Integer
+			GetAsInteger (Integer) : Integer
+			GetName: String
+		Procedimentos
+			Print (Object <TOutPut>) 
+			SetData (Integer, Real) 
+			Add (Real) 
+			Delete (Integer, Integer) 
+			QuickSort (Boolean) 
+			Fill (Real) 
+			SetLen (Integer) 
+		TwsSFVec
+			Funções
+				GetData (Integer) : Real
+				IsMissValue (Integer, Real) : Boolean
+				GetLen: Integer
+				GetAsInteger (Integer) : Integer
+				GetName: String
+			Procedimentos
+				Print (Object <TOutPut>) 
+				SetData (Integer, Real) 
+				Add (Real) 
+				Delete (Integer, Integer) 
+				QuickSort (Boolean) 
+				Fill (Real) 
+				SetLen (Integer) 
+		TwsDFVec
+			Funções
+				GetData (Integer) : Real
+				IsMissValue (Integer, Real) : Boolean
+				GetLen: Integer
+				GetAsInteger (Integer) : Integer
+				GetName: String
+			Procedimentos
+				Print (Object <TOutPut>) 
+				SetData (Integer, Real) 
+				Add (Real) 
+				Delete (Integer, Integer) 
+				QuickSort (Boolean) 
+				Fill (Real) 
+				SetLen (Integer) 
+		TwsSIVec
+			Funções
+				GetData (Integer) : Real
+				IsMissValue (Integer, Real) : Boolean
+				GetLen: Integer
+				GetAsInteger (Integer) : Integer
+				GetName: String
+			Procedimentos
+				Print (Object <TOutPut>) 
+				SetData (Integer, Real) 
+				Add (Real) 
+				Delete (Integer, Integer) 
+				QuickSort (Boolean) 
+				Fill (Real) 
+				SetLen (Integer) 
+		TwsLIVec
+			Funções
+				GetData (Integer) : Real
+				IsMissValue (Integer, Real) : Boolean
+				GetLen: Integer
+				GetAsInteger (Integer) : Integer
+				GetName: String
+			Procedimentos
+				Print (Object <TOutPut>) 
+				SetData (Integer, Real) 
+				Add (Real) 
+				Delete (Integer, Integer) 
+				QuickSort (Boolean) 
+				Fill (Real) 
+				SetLen (Integer) 
+	TgrGrafico
+		Funções
+			Series: Object <TListaDeSeries>
+		Procedimentos
+			Show
+	TListaDeSeries
+		Procedimentos
+			AddLineSerie (Object <TwsVec>, Integer, String) 
+	TPlanilha
+		Procedimentos
+			Write (Integer, Integer, String) 
+			WriteFloat (Integer, Integer, Real) 
+			WriteCenter (Integer, Integer, String) 
+			WriteFloatCenter (Integer, Integer, Real) 
+			WriteVecInCol (Object <TwsVec>, Integer, Integer) 
+			WriteVecInRow (Object <TwsVec>, Integer, Integer) 
+			SetCellFont (Integer, Integer, String, Integer, Integer, Boolean, Boolean, Boolean) 
+			Cut
+			Copy
+			Paste
+			Clear
+			Print
+			Cut
+			Show
+			LoadFromFile (String) 
+			SaveToFile (String, String) 
+Funções
+	ValToStr (Real) : String
+	ObjectIsValid (Object <TObject>) : Boolean
+	SQR (Real) : Real
+	Power (Real, Real) : Real
+	ArcCos (Real) : Real
+	ArcSin (Real) : Real
+	ArcTan2 (Real, Real) : Real
+	Tan (Real) : Real
+	CoTan (Real) : Real
+	Hypot (Real, Real) : Real
+	DegToRad (Real) : Real
+	RadToDeg (Real) : Real
+	GradToRad (Real) : Real
+	RadToGrad (Real) : Real
+	CycleToRad (Real) : Real
+	RadToCycle (Real) : Real
+	Cosh (Real) : Real
+	Sinh (Real) : Real
+	Tanh (Real) : Real
+	ArcCosh (Real) : Real
+	ArcSinh (Real) : Real
+	ArcTanh (Real) : Real
+	LnXP1 (Real) : Real
+	Log10 (Real) : Real
+	Log2 (Real) : Real
+	LogN (Real, Real) : Real
+	IntPower (Real, Integer) : Real
+	Ldexp (Real, Integer) : Real
+	Min (Real, Real) : Real
+	Max (Real, Real) : Real
+	Pos (String, String) : Integer
+	Copy (String, Integer, Integer) : String
+	LowerCase (String) : String
+	UpperCase (String) : String
+	CompareStr (String, String) : Integer
+	CompareText (String, String) : Integer
+	SameText (String, String) : Boolean
+	Trim (String) : String
+	TrimLeft (String) : String
+	TrimRight (String) : String
+	QuotedStr (String) : String
+	FloatToStr (Real) : String
+	FormatFloat (String, Real) : String
+	StrToFloat (String) : Real
+	ExtractFilePath (String) : String
+	ExtractFileDir (String) : String
+	ExtractFileDrive (String) : String
+	ExtractFileName (String) : String
+	ExtractFileExt (String) : String
+	ExtractShortPathName (String) : String
+	LTrimZeros (String) : String
+	StrRight (String, Integer) : String
+	LeftDelimiter (String, String) : String
+	Alltrim (String) : String
+	RTrim (String, String) : String
+	DeleteSubStr (String, String, String) : String
+	ReplaceSubStr (String, String, String) : String
+	GetSubString (String, String, String) : String
+	RemoveDuplicates (Object <TStrings>) : Object <TStrings>
+	StrCenter (String, Integer) : String
+	ChangeChar (String, String, String) : String
+	Encrypt (String, Integer) : String
+	Decrypt (String, Integer) : String
+	AddCharL (String, String, Integer) : String
+	AddCharR (String, String, Integer) : String
+	LeftStr (String, Integer) : String
+	StrPadZeroL (String, Integer) : String
+	DelSpace1 (String) : String
+	DelSpaces (String) : String
+	DeleteFile (String) : Boolean
+	RenameFile (String, String) : Boolean
+	ChangeFileExt (String, String) : String
+	FileSearch (String, String) : String
+	DiskFree (Integer) : Integer
+	DiskSize (Integer) : Integer
+	GetCurrentDir: String
+	SetCurrentDir (String) : Boolean
+	CreateDir (String) : Boolean
+	RemoveDir (String) : Boolean
+	wsGeneralCreate (Integer, Integer) : Object <TwsGeneral>
+	wsSFVecCreate (Integer) : Object <TwsSFVec>
+	wsDFVecCreate (Integer) : Object <TwsDFVec>
+	wsSIVecCreate (Integer) : Object <TwsSIVec>
+	wsLIVecCreate (Integer) : Object <TwsLIVec>
+Procedimentos
+	FreeObject (Object <TObject>) 
+	ShowMessage (String) 
+	SinCos (Real, Real, Real) 
+	Delete (String, Integer, Integer) 
+	Insert (String, String, Integer) 
+	StringToStrings (String, Object <TStrings>, String) 
+Variáveis

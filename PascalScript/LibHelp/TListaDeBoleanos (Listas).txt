@@ -1,0 +1,8 @@
+********************
+Adicionar
+Adiciona um item Lógico (Verdadeiro/Falso) na lista
+********************
+Remover
+Remove um item Lógico (Verdadeiro/Falso) da lista
+Parâmetro: Índice do Item
+

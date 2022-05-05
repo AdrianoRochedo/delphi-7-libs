@@ -1,0 +1,832 @@
+// Versão 2.0
+
+unit OutPut;
+
+{ INSTRUÇÕES:
+
+  Por default, TOutPut gerará todas as saídas em formato HTML, para escolher o formato
+  desejado use a propriedade DocType.
+
+  Para gerar uma saída especifique um nome de arquivo em FileName. Mas cuidado, se o
+  arquivo já existir será sobreescrito.
+
+  Para mostrar a sáida gerada, chame os métodos Save e Show em sequência.
+}
+
+interface
+uses Classes,
+     SysUtils,
+     Graphics;
+
+type
+  TEnumDocType = (dtHTML, dtTEXT, dtSHEET);
+  TEnumAlign   = (aLeft, aRight, aCenter, amiddle, abottom, abaseline);
+  TFontStyle   = (aBold, aItalic, aBoldItalic, nBoldItalic);
+  TArray       =  array[0..5] of string;
+  // Gerencia as propriedades de um documento HTML
+
+const
+  EnumAlign : TArray = ('Left', 'Right', 'Center', 'Middle', 'Bottom', 'Baseline');
+  ActOut: TEnumDocType = dtTEXT;  // Estabelece formato atual de saida.
+
+type
+
+  THTML_Doc = class
+  private
+    FBI : String;
+    FALC: TColor;
+    FTC : TColor;
+    FLC : TColor;
+    FVLC: TColor;
+    FBC : TColor;
+    FTitle: String;
+  public
+    constructor Create;
+
+    procedure BeginDoc(Text: TStrings);
+    procedure EndDoc(Text: TStrings);
+
+    property Title              : String read FTitle write FTitle;
+    property Background_Image   : String read FBI    write FBI;
+    property Background_Color   : TColor read FBC    write FBC;
+    property Text_Color         : TColor read FTC    write FTC;
+    property Link_Color         : TColor read FLC    write FLC;
+    property Visited_Link_Color : TColor read FVLC   write FVLC;
+    property Active_Link_Color  : TColor read FALC   write FALC;
+  end;
+
+  // Gerencia as propriedades do texto HTML
+  THTML_Font = class
+  private
+    FItalic: Boolean;
+    FBold: Boolean;
+    FSize: Integer;
+    FName: String;
+    FColor: TColor;
+    FAlign: TEnumAlign;
+  public
+    constructor Create;
+
+    procedure BeginFont(Text: TStrings);
+    procedure EndFont(Text: TStrings);
+
+    procedure SaveProperties;
+    procedure RetrieveProperties;
+
+    property Name   : String       read FName   write FName;
+    property Size   : Integer      read FSize   write FSize;
+    property Color  : TColor       read FColor  write FColor;
+    property Bold   : Boolean      read FBold   write FBold;
+    property Italic : Boolean      read FItalic write FItalic;
+    property Align  : TEnumAlign   read FAlign  write FAlign;
+  end;
+
+
+  // Propriedades de uma tabela definidas na linguagem HTML \\
+  TTable_Properties = class
+  private
+    FAlign        : TEnumAlign;        //Alinhamento
+    FBorder       : integer;           //Largura da borda
+    FCellPadding  : integer;           //Quantidade de espaço entre as bordas de uma célula e seu conteúdo \\
+    FCellSpacing  : integer;           //Quantidade de espaço inserido entre as células individuais \\
+    FWidth        : integer;           //Largura de uma tabela em termos absolutos
+    FAlignCaption : TEnumAlign;        // Alinhamento do caption
+    FAlignH       : TEnumAlign;        // Alinhamento do cabeçalho
+  public
+    constructor create;
+
+    procedure BeginTable(Text : Tstrings);
+    procedure EndTable(Text : Tstrings);
+
+    procedure BeginCaption(Text : TStrings);
+    procedure EndCaption(Text : TStrings);
+
+    procedure BeginH(Text : TStrings);
+    procedure EndH(Text : TStrings);
+
+    property Align       : TEnumAlign  read  FAlign        write  FAlign;
+    property Border      : integer     read  FBorder       write  FBorder;
+    property CellPadding : integer     read  FCellPadding  write  FCellPadding;
+    property CellSpacing : integer     read  FCellSpacing  write  FCellSpacing;
+    property Width       : integer     read  FWidth        write  FWidth;
+    property AlignCaption: TEnumAlign  read  FAlignCaption write  FAlignCaption;
+    property AlignH      : TEnumAlign  read  FAlignH       write  FAlignH;
+end;
+
+  //Classe generica para propriedades de uma linha ou de uma célula \\
+  TRow_Properties = Class
+    private
+      FWidth    : integer; // Largura da Célula
+    public
+      constructor create;
+
+      procedure BeginRow(Text : TStrings);
+      procedure EndRow(Text : TStrings);
+      property Width   : integer    read FWidth   write FWidth;
+  end;
+
+  TCell_Properties = class
+  private
+    FAlign    : TEnumAlign;
+    FColSpan  : integer; // Quantas colunas da tabela uma célula deverá abranger\\
+    FHeight   : integer; // Altura da celula
+    FNowRap   : boolean; // Permite que o broser mostre todo o conteudo da cedula em uma unica linha\\
+    FRowSpan  : integer; // Quantas linhas da tabela uma célula deverá abranger\\
+    FWidth    : integer;
+    FVAlign   : TEnumAlign;
+    // Controla a colocação do conteúdo da células nas partes superior,
+    //média ou inferior da céulua ou para alinhar todos
+    // os elementos a uma linha comum
+  public
+    constructor create;
+
+    procedure BeginCell(Text : TStrings);
+    procedure EndCell(Text : TStrings);
+
+    property Align   : TEnumAlign read FAlign   write FAlign;
+    property ColSpan : integer    read FColSpan write FColSpan;
+    property Height  : integer    read FHeight  write FHeight;
+    property NowRap  : boolean    read FNowRap  write FNowRap;
+    property RowSpan : integer    read FRowSpan write FRowspan;
+    property VAlign  : TEnumAlign read FVAlign  write FVAlign;
+    property Width   : integer    read FWidth   write FWidth;
+end;
+
+  // Gerencia a saída dos dados em vários formatos possíveis
+  TOutPut = class
+  private
+    FFileName  : String;
+    FDocType   : TEnumDocType;
+    FHD        : THTML_Doc;
+    FHF        : THTML_Font;
+    FTP        : TTable_Properties;
+    FRP        : TRow_Properties;
+    FCP        : TCell_Properties;
+    FText      : TStrings;
+    FPath      : String;
+
+    procedure SetFileName(const Value: String);
+  public
+    Constructor Create(DocType: TEnumDocType = dtTEXT; const FileName: String = '');
+    Destructor Destroy; override;
+
+    procedure Write(const s: String = ''; NewLine: Boolean = True); overload;
+    procedure Write(Image: TGraphic); overload;
+    procedure Write(SL: TStrings); overload;
+    procedure Write(const Text: String;
+                    Color: TColor; Size: Integer;
+                    Center, Bold, Italic: Boolean;
+                    NewLine: Boolean = True;
+                    const FontName: String = 'ARIAL'); overload;
+
+    procedure WriteCenter(const s: String; Len: Word = 110);
+    procedure WriteLine(N: Integer = 1);
+    procedure WriteSpaces(N: Integer);
+    procedure WriteLink(const Link, Text: String; NewLine: Boolean = True);
+    procedure WriteSeparator;
+
+    procedure Warning(Aviso: string);
+
+    procedure BeginDoc;
+    procedure EndDoc;
+    procedure BeginParagraph;
+    procedure EndParagraph;
+    procedure BeginFont;
+    procedure EndFont;   
+    procedure BeginTable;
+    procedure EndTable;
+    procedure BeginRow;
+    procedure EndRow;
+    procedure BeginCell;
+    procedure EndCell;
+    procedure BeginTableCaption;
+    procedure EndTableCaption;
+    procedure BeginTableHeader;
+    procedure EndTableHeader;
+
+  //  procedure SetFont(const Name: string; Color: TColor; Size: Integer; Style: TFontStyle);
+
+    procedure Clear;
+    procedure Save;
+    procedure Show(ClearBuffer: Boolean = True);
+    procedure ShowHTML; virtual;
+    procedure ShowTEXT; virtual;
+    procedure InitDoc;
+    procedure SaveDoc;
+
+    property DocType           : TEnumDocType      read FDocType        write FDocType;
+    property FileName          : String            read FFileName       write SetFileName;
+    property Text              : TStrings          read FText;
+
+    property HTML_Body         : THTML_Doc         read FHD; // HTML
+    property HTML_Font         : THTML_Font        read FHF; // HTML
+
+    property Table_Properties: TTable_Properties   read FTP ;
+    property Row_Properties  : TRow_Properties     read FRP ;
+    property Cell_Properties : TCell_Properties    read FCP ;
+
+{
+    property HtmlFontName : string     read GetFontName  write SetFontName;
+    property HtmlFontSize : integer    read GetFontSize  write SetFontSize;
+    property HtmlFontStyle: tFontStyle read GetFontStyle write SetFontStyle;
+    property HtmlFontColor: tColor     read GetFontColor write SetFontColor;
+    property HtmlFontAlign: tEnumAlign read GetFontAlign write SetFontAlign;
+}
+  end;
+
+
+implementation
+uses Windows,
+     FileCtrl,
+     jpeg,
+     ShellAPI,
+     SysUtilsEx,
+     FileUtils
+     {$ifdef NoForms}
+        ;
+     {$else}
+        ,OutPut_HTML_DLG;
+     {$endif}
+
+function GetRGBColor(Color: TColor): String;
+begin
+  Result := intToHex(getRValue(Color), 2) +
+            intToHex(getGValue(Color), 2) +
+            intToHex(getBValue(Color), 2);
+end;
+
+{ THTML_Doc }
+
+procedure THTML_Doc.BeginDoc(Text: TStrings);
+begin
+  Text.Add('<html>');
+  Text.Add('<head>');
+  Text.Add('  <title>');
+  Text.Add('    ' + FTitle);
+  Text.Add('  </title>');
+  Text.Add('</head>');
+
+  Text.Add('<body');
+  if Background_Image <> '' then
+     Text.Add(Format('  background= %s%s%s', [chr(39),Background_Image,chr(39)]));
+
+  if Background_Color <> -1 then
+     Text.Add(Format('  bgcolor= %s#%s%s>', [chr(39),GetRGBColor(Background_Color),chr(39)]));
+
+  if Text_Color <> -1 then
+     Text.Add(Format('  text= %s#%s%s>', [chr(39),GetRGBColor(Text_Color),chr(39)]));
+
+  if Link_Color <> -1 then
+     Text.Add(Format('  link= %s#%s%s>', [chr(39),GetRGBColor(Link_Color),chr(39)]));
+
+  if Visited_Link_Color <> -1 then
+     Text.Add(Format('  vlink= %s#%s%s>', [chr(39),GetRGBColor(Visited_Link_Color),chr(39)]));
+
+  if Active_Link_Color <> -1 then
+     Text.Add(Format('  alink=%s#%s%s>', [chr(39),GetRGBColor(Active_Link_Color),chr(39)]));
+
+  Text.Add('>');
+end;
+
+constructor THTML_Doc.Create;
+begin
+  inherited;
+
+  FALC := -1;
+  FTC  := -1;
+  FLC  := -1;
+  FVLC := -1;
+  FBC  := -1;
+end;
+
+procedure THTML_Doc.EndDoc(Text: TStrings);
+begin
+  Text.Add('</body>');
+  Text.Add('</HTML>');
+end;
+
+{ THTML_Font }
+
+procedure THTML_Font.BeginFont(Text: TStrings);
+begin
+  Text.Add('<font');
+  Text.Add(Format('   face  = "%s"'  , [FName]));
+  Text.Add(Format('   size  = "%s"'  , [IntToStr(FSize)]));
+  Text.Add(Format('   color = "#%s">', [GetRGBColor(FColor)]));
+
+  if FAlign <> aLeft then
+     begin
+     Text.Add('<div');
+     if FAlign = aRight then Text.Add('align = "right"');
+     if FAlign = aCenter then Text.Add('align = "center"');
+     end;
+
+  if FItalic then Text.Add('<i>');
+  if FBold then Text.Add('<b>');
+end;
+
+constructor THTML_Font.Create;
+begin
+  inherited;
+  FSize   := 1;
+  FName   := 'Courier New';
+  FColor  := clBlack;
+  FAlign  := aLeft;
+end;
+
+procedure THTML_Font.EndFont(Text: TStrings);
+begin
+  if FBold then Text.Add('</b>');
+  if FItalic then Text.Add('</i>');
+  if FAlign <> aLeft then Text.Add('</div>');
+  Text.Add('</font>');
+end;
+
+
+procedure THTML_Font.RetrieveProperties;
+begin
+ // <<<
+end;
+
+procedure THTML_Font.SaveProperties;
+begin
+  // <<<
+end;
+
+{ TOutPut }
+
+procedure TOutPut.BeginDoc;
+begin
+  FText.Clear;
+  if FDocType = dtHTML then FHD.BeginDoc(FText);
+end;
+
+procedure TOutPut.BeginFont;
+begin
+  if FDocType = dtHTML then FHF.BeginFont(FText);
+end;
+
+procedure TOutPut.BeginParagraph;
+begin
+  if FDocType = dtHTML then FText.Add('<P>');
+end;
+
+constructor TOutPut.Create(DocType: TEnumDocType = dtTEXT; const FileName: String = '');
+begin
+  FDocType := DocType;
+
+  if FileName = '' then
+     if FDocType = dtTEXT then
+        FFileName := GetTempFile('', 'OutPut_', 'TXT')
+     else
+        FFileName := GetTempFile('', 'OutPut_', 'HTM')
+  else
+     FFileName := FileName;
+
+  if FFileName <> '' then
+     FPath := ExtractFilePath(FFileName);
+
+  FHD       := THTML_Doc.Create;
+  FHF       := THTML_Font.Create;
+  FTP       := TTable_Properties.Create;
+  FRP       := TRow_Properties.Create;
+  FCP       := TCell_Properties.Create;
+  FText     := TStringList.Create;
+end;
+
+destructor TOutPut.Destroy;
+begin
+  FHD.Free;
+  FHF.Free;
+  FTP.Free;
+  FRP.Free;
+  FCP.Free;
+  FText.Free;
+  inherited;
+end;
+
+procedure TOutPut.EndDoc;
+begin
+  if FDocType = dtHTML then FHD.EndDoc(FText);
+end;
+
+procedure TOutPut.EndFont;
+begin
+  if FDocType = dtHTML then FHF.EndFont(FText);
+end;
+
+procedure TOutPut.EndParagraph;
+begin
+  if FDocType = dtHTML then FText.Add('</P>');
+end;
+
+procedure TOutPut.Save;
+var Dir : String;
+begin
+  if FFileName = '' then
+     begin
+     SelectDirectory(
+       'Selecione um diretório para armazenamento do arquivo temporário', '', Dir);
+
+     if (Dir <> '') then
+        if FDocType = dtTEXT then
+           FFileName := GetTempFile(Dir, 'OutPut_', 'TXT')
+        else
+           FFileName := GetTempFile(Dir, 'OutPut_', 'HTM');
+     end;
+
+  try
+    FText.SaveToFile(FFileName);
+  except
+{$ifndef NoForms}
+    if SelectFile(FFileName, '', 'Temp (*.tmp)|*.tmp', False) then
+       FText.SaveToFile(FFileName);
+{$endif}
+  end;
+end;
+
+procedure TOutPut.SetFileName(const Value: String);
+begin
+  FPath := ExtractFilePath(Value);
+  if DirectoryExists(FPath) then
+     FFileName := Value
+  else
+     Raise Exception.Create('Classe: TOutPut'#13 +
+                            'Diretório Inválido !'#13 + FPath);
+end;
+
+procedure TOutPut.Show(ClearBuffer: Boolean = True);
+begin
+  case FDocType of
+    dtHTML: ShowHTML;
+    dtTEXT: ShowTEXT;
+  end;
+  if ClearBuffer then Clear;
+end;
+
+procedure TOutPut.ShowHTML;
+{$ifndef NoForms}
+var d: TOutPutHTML_DLG;
+{$endif}
+begin
+  Save;
+{$ifdef NoForms}
+  ShellExecute(MainInstance,
+               'OPEN',
+               pChar(FFileName),
+               '',
+               '',
+               sw_SHOW);
+{$else}
+  d := TOutPutHTML_DLG.Create(nil);
+  d.Show;
+  d.Open(FFileName);
+{$endif}
+end;
+
+procedure TOutPut.ShowTEXT;
+begin
+  Save;
+  ShellExecute(MainInstance,
+               'OPEN',
+               pChar(FFileName),
+               '',
+               '',
+               sw_SHOW);
+end;
+
+procedure TOutPut.BeginTable;
+begin
+  if FDocType = dtHTML then Table_Properties.BeginTable(FText);
+end;
+
+procedure TOutPut.EndTable;
+begin
+  if FDocType = dtHTML then Table_Properties.EndTable(FText);
+end;
+
+procedure TOutPut.BeginRow;
+begin
+ if FDocType = dtHTML then Row_Properties.BeginRow(FText);
+end;
+
+procedure TOutPut.EndRow;
+begin
+  if FDocType = dtHTML then Row_Properties.EndRow(FText);
+end;
+
+procedure TOutPut.BeginCell;
+begin
+  if FDocType = dtHTML then Cell_Properties.BeginCell(Text);
+end;
+
+procedure TOutPut.EndCell;
+begin
+  if FDocType = dtHTML then Cell_Properties.EndCell(Text);
+end;
+
+procedure TOutPut.BeginTableCaption;
+begin
+  Table_Properties.BeginCaption(fText);
+end;
+
+procedure TOutPut.EndTableCaption;
+begin
+  Table_Properties.EndCaption(fText);
+end;
+
+procedure TOutPut.BeginTableHeader;
+begin
+  Table_Properties.BeginH(fText);
+end;
+
+procedure TOutPut.EndTableHeader;
+begin
+  Table_Properties.EndH(fText);
+end;
+
+procedure TOutPut.Write(Image: TGraphic);
+var s   : String;
+    jpg : TJPEGImage;
+begin
+  if FDocType <> dtHTML then Exit;
+
+  s := getTempFile(FPath, 'img', 'jpg');
+
+  jpg := TJPEGImage.Create;
+  try
+    jpg.Assign(Image);
+    jpg.CompressionQuality := 100;
+    jpg.SaveToFile(s);
+  finally
+    jpg.Free;
+  end;
+
+  FText.Add('<img');
+  FText.Add(Format('  src=%s' ,     [ExtractFileName(s)]));
+  FText.Add(Format('  width=%d ' , [Image.Width]));
+  FText.Add(Format('  height=%d ', [Image.Height]));
+  FText.Add('  border=0');
+  FText.Add('>');
+end;
+
+procedure TOutPut.Write(const s: string = ''; NewLine: Boolean = True);
+begin
+  if FDocType = dtHTML then
+     if NewLine then FText.Add(s + '<BR>') else FText.Add(s)
+  else
+     if FDocType = dtTEXT then
+        if NewLine or (FText.Count = 0) then
+           FText.Add(s)
+        else
+           FText[FText.Count-1] := FText[FText.Count-1] + s;
+end;
+
+procedure TOutPut.WriteCenter(const s: String; Len: Word=110);
+begin
+  if FDocType = dtHTML then
+     begin
+     FText.Add('<center>');
+     Write(s, True);
+     FText.Add('</center>');
+     end
+  else
+    if FDocType = dtTEXT then
+      Write(strCenter(s, Len), True);
+end;
+
+{ TTABLE PROPERTIES}
+constructor TTable_Properties.Create;
+begin
+  Align        := aLeft;
+  Border       := 0;
+  CellPadding  := 1;
+  CellSpacing  := 1;
+  Width        := 1;
+  AlignCaption := aLeft;
+end;
+
+procedure TTable_Properties.BeginTable(Text : TStrings);
+begin
+  Text.Add('<Table');
+
+  if Align <> aLeft then
+     Text.Add(Format('  Align = "%s"', [EnumAlign[byte(Align)]]));
+
+  if Border <> 0 then
+     Text.Add(Format('  Border = "%d"', [Border]));
+
+  if CellPadding <> 1 then
+     Text.Add(Format('  CellPadding = "%d"', [CellPadding]));
+
+  if CellSpacing <> 1 then
+     Text.Add(Format('  CellSpacing = "%d"', [CellSpacing]));
+
+  if Width <> 1 then
+     Text.Add(Format('  Width = "%d"', [Width]));
+
+  Text.Add('>');
+end;
+
+procedure TTable_Properties.EndTable(Text : Tstrings);
+begin
+  Text.Add('</Table>');
+end;
+
+procedure TTable_Properties.BeginCaption(Text : TStrings);
+begin
+  Text.Add(Format('<CAPTION ALIGN = "%s" ',[EnumAlign[byte(AlignCaption)]]));
+  Text.Add('>');
+end;
+
+procedure TTable_Properties.EndCaption(Text : TStrings);
+begin
+  Text.Add('</CAPTION>');
+end;
+
+ {ROW PROPERTIES}
+
+procedure TTable_Properties.BeginH(Text : TStrings);
+begin
+  Text.Add('<TH>');
+end;
+
+procedure TTable_Properties.EndH(Text : Tstrings);
+begin
+  Text.Add('</TH>');
+end;
+
+constructor TRow_Properties.Create;
+begin
+  //Align   := aCenter;
+  //VAlign  := aMiddle;
+end;
+
+procedure TRow_Properties.BeginRow(Text : TStrings);
+begin
+  Text.Add('<TR ');
+  //Text.Add(Format('Align = "%s"',[EnumAlign[byte(Align)]]));
+  //Text.Add(Format('VAlign = "%s"',[EnumAlign[byte(VAlign)]]));
+  Text.Add('>');
+end;
+procedure TRow_Properties.EndRow(Text : TStrings);
+begin
+  Text.Add('</TR>');
+end;
+
+  {CELL PROPERTIES}
+
+constructor TCell_Properties.Create;
+begin
+  inherited;
+
+  Align   := aLeft;
+  ColSpan := 1;
+  Height  := 1;
+  NowRap  := False;
+  RowSpan := 1;
+  VAlign  := aMiddle;
+  Width   := 1;
+end;
+
+procedure TCell_Properties.BeginCell(Text : TStrings);
+begin
+  Text.Add('<TD');
+
+  if Align <> aLeft then
+     Text.Add(Format('  Align = "%s"', [EnumAlign[byte(Align)]]));
+
+  if ColSpan <> 1 then
+     Text.Add(Format('  ColSpan = "%d"', [ColSpan]));
+
+  if Height <> 1 then
+     Text.Add(Format('  Height = "%d"', [Height]));
+
+  if VAlign <> aMiddle then
+     Text.Add(Format('  VAlign = "%s"', [EnumAlign[byte(VAlign)]]));
+
+  if Width <> 1 then
+     Text.Add(Format('  Width = "%d"', [Width]));
+
+  if RowSpan <> 1 then
+     Text.Add(Format('  RowSpan = "%d"', [RowSpan]));
+
+  if NowRap then
+     Text.Add('  NowRap');
+
+  Text.Add('>');
+end;
+
+procedure TCell_Properties.EndCell;
+begin
+  Text.Add('</TD>');
+end;
+
+procedure TOutPut.Warning(Aviso: string);
+var s1 : string;
+    j  : cardinal;
+    ch : tcharset;
+    c  : TColor;
+begin
+ c := Html_Font.Color;
+ Html_Font.Color := clRed;
+ BeginFont;
+   Text.Add('AVISO: ');
+ Html_Font.Color := c;
+
+ ch := ['/'];
+ j := 1;
+ s1 := StrToken(Aviso,j,ch);
+ Write(s1);
+ s1 := StrToken(Aviso,j,ch);
+ while s1 <> '' do
+   begin
+     s1  := '.......' + s1;
+     Write(s1);
+     s1 := StrToken(Aviso,j,ch);
+   end;
+ EndFont;
+ end;
+
+procedure TOutPut.InitDoc;
+begin
+  Clear;
+  if FDocType = dtHTML then BeginDoc;
+end;
+
+procedure TOutPut.SaveDoc;
+begin
+  if DocType = dtHTML then
+    begin
+    EndDoc;
+    Save;
+    // nesta posicao sera chamado o browser do Delphi
+    end
+  else
+    if DocType=dtTEXT then Show;
+end;
+
+procedure TOutPut.WriteLine(N: integer = 1);
+var i : integer;
+    st: String[4];
+begin
+  if FDocType = dtHTML then st := '<BR>' else st := '';
+  for i := 1 to N do FText.Add(st);
+end;
+
+procedure TOutPut.Write(const Text: String; Color: TColor;
+  Size: Integer; Center, Bold, Italic: Boolean;
+  NewLine: Boolean = True; const FontName: String = 'ARIAL');
+begin
+  HTML_Font.SaveProperties;
+
+  HTML_Font.Name   := FontName;
+  HTML_Font.Bold   := Bold;
+  HTML_Font.Italic := Italic;
+  HTML_Font.Color  := Color;
+  HTML_Font.Size   := Size;
+
+  if Center then
+     Html_Font.Align := aCenter
+  else
+     Html_Font.Align := aLeft;
+
+  BeginFont;
+    Write(Text, NewLine);
+  EndFont;
+
+  HTML_Font.RetrieveProperties;
+end;
+
+procedure TOutPut.WriteLink(const Link, Text: String; NewLine: Boolean = True);
+begin
+  Write(Format('<A HREF="%s">%s', [Link, Text]), NewLine);
+end;
+
+procedure TOutPut.WriteSeparator;
+begin
+  Write('<HR>');
+end;
+
+procedure TOutPut.WriteSpaces(N: Integer);
+var s: String;
+    i: Integer;
+begin
+  s := '';
+  for i := 1 to N do s := s + '&nbsp;';
+  FText.Add(s);
+end;
+
+procedure TOutPut.Clear;
+begin
+  FText.Clear;
+end;
+
+procedure TOutPut.Write(SL: TStrings);
+var i: Integer;
+begin
+  for i := 0 to SL.Count-1 do
+    Write(SL[i]);
+end;
+
+end.

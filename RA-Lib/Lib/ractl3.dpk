@@ -1,0 +1,58 @@
+package ractl3;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'R&A Controls'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl30;
+
+contains
+  RAStream,
+  IParser,
+  RAButtons,
+  RACombo,
+  RAComponentPanel,
+  RACnst,
+  RACt,
+  RADlg,
+  RADoubleCombo,
+  RADsgnIntf,
+  RAEditor,
+  RAHint,
+  RAHLEditor,
+  RAHook,
+  RAImage,
+  RARegAuto,
+  RARegAutoGrid,
+  RAScrollBar,
+  RAScrollMax,
+  iMTracer,
+  RATreeView,
+  RAUtils,
+  RAScrollText,
+  RAHLEdPropDlg;
+
+end.

@@ -1,0 +1,49 @@
+Program Teste;
+ 
+Var
+   i, ii  : Integer;
+   S      : String;
+   OutPut : Object;
+   M, M2  : Object;
+   V1,V2  : Object;
+   L, C   : Integer;
+ begin
+  L := 5;
+  C := 5;
+
+  OutPut := CreateObject(TOutPut);
+  M      := CreateObject(TwsGeneral, L, C);
+
+  {Exemplo de como acessar os elementos de uma matriz}
+  for i := 1 to L do
+    for ii := 1 to C do
+      M.Set(i, ii, i * ii);
+
+  OutPut.WriteLN('Antes da Potenciação');
+  OutPut.WriteLN('');
+
+  M.Print(OutPut);
+  M2 := M.Power(2); // Eleva a matriz a segunda potência
+
+  OutPut.WriteLN('');
+
+  OutPut.WriteLN('Após a Potenciação por 2');
+  OutPut.WriteLN('');
+  M2.Print(OutPut);
+
+  OutPut.WriteLN('Após ser ordenada pelas duas primeiras colunas');
+  V1 := CreateObject(TwsLIVec, 2); V1.Set(1, 1); V1.Set(2, 2); // Cols
+  V2 := CreateObject(TwsLIVec, 2); V2.Set(1, 0); V2.Set(2, 0); // Direções
+  M2.SortRows(V1 {Cols}, V2 {Direções});
+  OutPut.Write('');
+  M2.Print(OutPut);
+  FreeObject(V1);
+  FreeObject(V2);
+  FreeObject(M2);
+
+  OutPut.Show; 
+
+  FreeObject(M);
+  FreeObject(OutPut);
+end.
+

@@ -1,0 +1,56 @@
+package tee44;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{ DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{ LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $F4240}
+{$DESCRIPTION 'TeeChart 4.0 Components'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE D5}
+{$DEFINE D3}
+
+requires
+  vcl,
+  vcldb,
+  designide,
+  dsnap;
+
+contains
+  TeeConst,
+  TeCanvas,
+  TeeProcs,
+  TeEngine,
+  Chart,
+  TeeFunci,
+  Series ,
+  TeeShape ,
+  GanttCh ,
+  BubbleCh ,
+  ArrowCha ,
+  PenDlg ,
+  BrushDlg ,
+  TeExport ,
+  TeePrevi ,
+  TeeAbout;
+
+end.
+

@@ -1,0 +1,60 @@
+#define BaseRes $5000
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, 1
+{
+ BaseRes +   0, "Ok"
+ BaseRes +   1, "Error desconocido"
+ BaseRes +   2, "Error de interprete interno: %s"
+ BaseRes +   3, "Usuario interrumpe"
+ BaseRes +   4, "Re-levantar una excepcion solo permitido en manejador de excepciones"
+ BaseRes +   5, "Error en unidad '%s' en linea %d : %s"
+ BaseRes +   6, "Error externo en unidad '%s' en linea %d : %s"
+ BaseRes +   7, "Acceso denegado a '%s'"
+ BaseRes +  31, "Registro '%s' no definido"
+
+ BaseRes +  52, "Desborde de stack"
+ BaseRes +  53, "Disconcordancia en tipo"
+ BaseRes +  55, "Funcion 'main' indefinida"
+ BaseRes +  56, "Unidad '%s' no encontrada"
+ BaseRes +  57, "Evento '%s' no registrado"
+ BaseRes +  58, "Dfm '%s' no encontrada"
+
+ BaseRes + 101, "Error al remarcar"
+ BaseRes + 103, "%s esperado pero %s encontrado"
+ BaseRes + 104, "Identificador no declarado '%s'"
+ BaseRes + 105, "Tipo de la expresion debe ser booleano"
+ BaseRes + 106, "Tipo de la clase requerido"
+ BaseRes + 107, "';' no se permite antes de else"
+ BaseRes + 108, "El tipo de la expresion debe ser entero"
+ BaseRes + 109, "El tipo del registro, objeto o clase requerido"
+ BaseRes + 110, "Operador o coma no se encontro"
+ BaseRes + 111, "Identificador redeclarado: '%s'"
+
+ BaseRes + 171, "Indice de arreglo fuera de limites"
+ BaseRes + 172, "Demasiados limites de arreglo"
+ BaseRes + 173, "Insuficientes limites en arreglo"
+ BaseRes + 174, "Dimension del arreglo invalida"
+ BaseRes + 175, "Rango del arreglo invalido"
+ BaseRes + 176, "Tipo de arreglo requerido"
+
+ BaseRes + 181, "Demasiados parametros actuales"
+ BaseRes + 182, "Parametros insuficientes"
+ BaseRes + 183, "Tipos incompatibles: '%s' y '%s'"
+ BaseRes + 184, "Error cargando libreria '%s'"
+ BaseRes + 185, "Tipo invalido de argumento en llamada a la funcion '%s'"
+ BaseRes + 186, "Tipo de resultado invalido en llamada a la funcion '%s'"
+ BaseRes + 187, "No se pudo obtener la direccion del proceso para la funcion '%s'"
+ BaseRes + 188, "Tipo de argumento invalido en llamada a la funcion '%s'"
+ BaseRes + 189, "Tipo de resultado invalido en la llamada a la funcion '%s'"
+ BaseRes + 190, "Convencion de llamada invalida para la funcion function '%s'"
+
+ BaseRes + 201, "Llamando a '%s' fallo: '%s'"
+
+ BaseRes + 301, "Expresion"
+ BaseRes + 302, "Identificador"
+ BaseRes + 303, "Declaracion"
+ BaseRes + 304, "fin de archivo"
+ BaseRes + 305, "Declaracion de clase"
+
+ BaseRes + 401, "Implementacion de unidad no encontrada"
+}

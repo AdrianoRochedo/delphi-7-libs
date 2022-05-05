@@ -1,0 +1,23 @@
+Program Teste_Graficos;
+ 
+Var
+   i, N   : Integer;
+   G      : Object;
+   V      : Object;
+ begin
+  N := 5;
+
+  G := CreateObject(TfoChart);
+  V := CreateObject(TwsSIVec, N);
+
+  {Exemplo de como acessar os elementos de uma matriz}
+  for i := 1 to N do
+    V.Set(i, SQR(i*10));
+
+  G.Series.AddLineSerieEx('bla bla bla', 0, V);
+  G.Show; 
+
+  FreeObject(V);
+
+  KeepRun;
+end.

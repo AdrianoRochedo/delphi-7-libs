@@ -1,0 +1,37 @@
+Program Teste_Graficos;
+ 
+Var
+   i, N   : Integer;
+   G      : Object;
+   V      : Object;
+   BS     : Object;
+ begin
+  N := 10;
+
+  G := CreateObject(TfoChart);
+  V := CreateObject(TwsSIVec, N);
+
+  {Exemplo de como acessar os elementos de um vetor}
+  for i := 1 to N do
+    V.Set(i, i * tan(i) * 10);
+
+  // Série de Linhas
+  G.Series.AddLineSerieEx('Linha', getColor('Yellow'), V);
+
+  // Série de barras
+  BS := G.Series.AddBarSerie('Barras', getColor('blue'), 0, 0);
+  BS.Add(223);
+  BS.Add(423);
+  BS.Add(323);
+  BS.AddEx(135, 'Barra vermelha', getColor('red'));
+  BS.SetBarWidthPercent(60);
+
+  BS.SetXLabel(0, 'Primeiro');
+  BS.SetXLabel(1, 'Secundo');
+  BS.SetXLabel(2, 'Terceiro');
+
+  G.Show;
+
+  FreeObject(V);
+  KeepRun;
+end.

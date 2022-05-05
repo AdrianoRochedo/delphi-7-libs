@@ -1,0 +1,14 @@
+Program Teste;
+ 
+Var
+   X, A: REAL;
+ 
+begin
+  x := 1;
+  while x < 2000 do
+    begin
+    x := x + 1;
+    a := a + 1;
+    end;
+end.
+

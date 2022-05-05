@@ -1,0 +1,1 @@
+gacutil -if "MySQLDriverCS.dll"

@@ -1,0 +1,37 @@
+INSTALLATION OF ZEOSDBO
+=======================
+
+You can download the current version from http://www.zeoslib.net (section Downloads).
+
+1. Unpack the archive to a folder
+
+2. Copy the required dlls from lib directory to the windows system directory 
+(usually Windows\System or winnt\system32).
+
+3. Locate the package directory associated with your compiler and open the ZeosDbo.bpg 
+project group.  Load the project and install the following components in the order
+listed:
+	- ZCore.bpl
+	- ZParse.bpl
+	- ZParseSql.bpl
+	- ZPlain.bpl
+	- ZDbc.bpl
+	- ZComponent.bpl
+
+4. Create your own project and start adding the compoents through the IDE and set 
+connection properties.  For a quick tutorial, use the example provided with the
+project or browse the resources on the web page.
+
+LIMITATIONS:
+
+1. While installing ZeosDBO under C++ Builder version 4 from the IDE, you may get this
+error when compiling the ZDbc package :
+
+<<
+[Pascal Fatal Error] ZDbcMetadata.pas(3076): Internal error: SY876.
+>>
+
+Currently, there is no known solution to this problem.  Therefore, it is recommended 
+to compile Zeoslib from the command line (issuing a 'make -f ZeosDBO.bpg' from the
+directory '\packages\cbuilder4' should accomplish this) and then to install the
+packages through menu Component->Install Packages.

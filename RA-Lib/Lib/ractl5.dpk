@@ -1,0 +1,59 @@
+package ractl5;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'R&A Controls'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl50;
+
+contains
+  RAStream in 'RAStream.pas',
+  IParser in 'IParser.pas',
+  RAButtons in 'RAButtons.pas',
+  RACombo in 'RACombo.pas',
+  RAComponentPanel in 'RAComponentPanel.pas',
+  RACnst in 'RACnst.pas',
+  RACt in 'RACt.pas',
+  RADlg in 'RADlg.pas',
+  RADoubleCombo in 'RADoubleCombo.pas',
+  RADsgnIntf in 'RADsgnIntf.pas',
+  RAEditor in 'RAEditor.pas',
+  RAHint in 'RAHint.pas',
+  RAHLEditor in 'RAHLEditor.pas',
+  RAHook in 'RAHook.pas',
+  RAImage in 'RAImage.pas',
+  RARegAuto in 'RARegAuto.pas',
+  RARegAutoGrid in 'RARegAutoGrid.pas',
+  RAScrollMax in 'RAScrollMax.pas',
+  iMTracer in 'iMTracer.pas',
+  RAUtils in 'RAUtils.pas',
+  RAScrollText in 'RAScrollText.pas',
+  RAScrollBar in 'RAScrollBar.pas',
+  RATreeView in 'RATreeView.pas',
+  RAHLEdPropDlg in 'RAHLEdPropDlg.pas' {RAHLEditorParamsForm},
+  RAVersion in 'RAVersion.pas';
+
+end.

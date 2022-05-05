@@ -1,0 +1,42 @@
+Installation instructions for VCLZip Source Code:
+
+If you have installed VCLZip previously, you can, if you wish, install this new version to the same directory.  The installation will overwrite files so you may wish to make a backup of the current files first.  If you do install to the same directory, you should delete all of the existing DCU files and you should definitely still re-install the component to the component palette.
+
+
+>> Delphi 1 or 2:
+
+Delphi 1:  Select Options | Install Components from the menu.
+
+Delphi 2:  Select Component | Install from the menu.
+
+1) Make sure the directory where you have the VCLZip source code is included in the Search path edit box near the top of the dialog box.  If it is not there, then add it to the Search Path.  
+
+IMPORTANT:  If there is already a DIFFERENT directory included which contains VCLZip source or DCU's, for instance if you had the Demo version installed to a different directory, remove that from the search path.
+ 
+2) If there are already entries for VCLZip and/or VCLUnZip in the Installed Units listbox, select each one and press the REMOVE button.
+
+3) Install both VCLUnZip.PAS and VCLZip.PAS using the ADD button. 
+
+4) Press the OK button.  
+
+The components will be compiled and added to the Samples tab on the Component palette.
+
+
+>> Delphi 3 or 4:
+
+ 1) If you currently have the Demo version installed then
+   (a) goto "Components|Install Packages" menu selection, find the entry for  the VCLZip component and remove it.  Then exit that dialog box.
+   (b) Goto "Tools|Environment Options" and goto the library tab and look for the entry in the library edit box where there should be an entry in the search path for the directory where the demo or previous version was. Remove this part of the search path.
+
+ 2) Goto "Components|Install Component" and select the tab to install component to new package.  
+   (a) For the top box (Unit Name) press the BROWSE button and find and select bot your newly installed VCLUnZip.PAS and VCLZip.PAS.  
+   (b) For the third box (Package file name) press the BROWSE button and in the file selection dialog box, give your package a filename (don't use the name VCLZip though as it will conflict with VCLZip.PAS if you do) and press OK.  
+   (c) Enter a description of some sort into the last box and press OK.  
+
+3) You should end up with a small dilalog box which lists VCLZip and VCLUnZip.  Press the Compile button.  If you get a message that says the package needs another VCL file or two, say YES and continue.
+
+4) Close the dialog box and say yes if asked if you wish to save changes.
+
+
+VCLZip and VCLUnZip should now be installed to the Samples tab of your component palette.
+

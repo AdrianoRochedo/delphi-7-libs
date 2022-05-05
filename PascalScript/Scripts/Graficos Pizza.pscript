@@ -1,0 +1,24 @@
+Program GraficosPizza;
+ 
+Var
+   G  : Object;
+   PS : Object;
+ begin
+  G := CreateObject(TfoChart);
+  G.setCaption('Gráfico de Pizza');
+  G.setBounds(50, 50, 400, 300);
+
+  // Série de barras
+  PS := G.Series.AddPieSerie('Pizza');
+  PS.Add(223);
+  PS.Add(423);
+  PS.Add(323);
+  PS.AddEx(135, 'Pedaço Azul', getColor('blue'));
+
+  PS.SetXLabel(0, 'Primeiro');
+  PS.SetXLabel(1, 'Secundo');
+  PS.SetXLabel(2, 'Terceiro');
+
+  G.Show;
+  KeepRun;
+end.

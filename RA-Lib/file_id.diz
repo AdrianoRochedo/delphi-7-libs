@@ -1,0 +1,30 @@
+R&A Library 1.62
+================
+
+The Set of Native Delphi Components for Borland Delphi.
+100% Source Code.
+
+Last revision date Jun, 16, 2001.
+
+
+If you have a problems while uncompressing this archive
+try razip - http://www.infa.ru/black/razip.exe.
+
+
+Small description of Library:
+
+R&A Library contains a number of components, classes and routines for Borland Delphi with full source code.
+
+This collection includes over 30 native Delphi components and special packages for run-time form designing.
+
+The most interesting parts of library are:
+  - RAI2 - small pascal interpreter with many features; it allows to you to add script engine to any delphi application;
+  - RAEditor - advanced text editor; RAHLEditor - based on RAEditor, it have built-in syntax highlighting feature for following syntax types: pascal, cpp, sql, java, htlm, phyton, perl, ini; custom reserved words also available.
+  - R&A Form Designer - run-time form designer;
+  - TRADBMove - can move data from one database to another with references between tables;
+  - and few other interesting components: TRAScrollMax - 3dmax-panel; TRAHtButton, RAHtListBox, TRAHtComboBox, TRAHtLabel - can paint captions and items with few font colors and styles, very easy to use, especially in run-time.
+
+
+
+Andrey Prigunkov, 
+  black@infa.ru

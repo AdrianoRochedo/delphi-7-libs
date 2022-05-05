@@ -1,0 +1,64 @@
+package TeeUI44;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{ DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{ LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $41F00000}
+{$DESCRIPTION 'Delphi TeeChart UI Components'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE D5}
+{$DEFINE D3}
+
+requires
+  Tee44,
+  TeeDB44;
+
+contains
+  DBEditCh,
+  TeeGally,
+  TeeLisB,
+  Axmaxmin,
+  AxisIncr,
+  EditChar,
+  Areaedit,
+  Arrowedi,
+  BarEdit,
+  CustEdit,
+  FLineEdi,
+  GanttEdi,
+  PieEdit,
+  ShapeEdi,
+  TeePoEdi,
+  iEditCha,
+  iEdiSeri,
+  iEdiGene,
+  iEdiAxis,
+  iEdiPane,
+  iEdiLege,
+  iEdiTitl,
+  iEdiWall,
+  iEdiPage,
+  iEdi3D,
+  iEdiPeri,
+  TeeStore;
+
+end.

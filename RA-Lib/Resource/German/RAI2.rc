@@ -1,0 +1,58 @@
+#define BaseRes $5000
+STRINGTABLE
+LANGUAGE LANG_GERMAN, 1
+{
+ BaseRes +   0, "Ok"
+ BaseRes +   1, "Unbekannter Fehler"
+ BaseRes +   2, "Interner Fehler: %s"
+ BaseRes +   3, "Benutzerunterbrechung"
+ BaseRes +   4, "Wiederhervorrufen einer Exception ist nur im Exception-Handler möglich"
+ BaseRes +   5, "Fehler in Unit '%s' in Zeile %d: %s"
+ BaseRes +  31, "Record '%s' nicht definiert"
+
+ BaseRes +  52, "Speicherüberlauf"
+ BaseRes +  53, "Ungültige Typumwandlung"
+ BaseRes +  55, "Funktion 'main' nicht definiert"
+ BaseRes +  56, "Unit '%s' nicht gefunden"
+ BaseRes +  57, "Ereignis '%s' nicht registriert"
+ BaseRes +  58, "Dfm '%s' not found"
+
+ BaseRes + 101, "Fehler im Kommentar"
+ BaseRes + 103, "%s erwartet aber %s gefunden"
+ BaseRes + 104, "Undefinierter Bezeichner '%s'"
+ BaseRes + 105, "Ausdruckstyp muss BOOLEAN sein"
+ BaseRes + 106, "Klassentyp erwartet"
+ BaseRes + 107, "';' nicht erlaubt vor einem ELSE"
+ BaseRes + 108, "Ausdruckstyp muss INTEGER sein"
+ BaseRes + 109, "Record, Object oder Klassentyp erforderlich"
+ BaseRes + 110, "Operator oder Semikolon fehlt"
+ BaseRes + 111, "Bezeichner redefiniert: '%s'"
+
+ BaseRes + 171, "Array-Index ausserhalb des gültigen Bereichs"
+ BaseRes + 172, "Zu viele Array-Bereiche"         
+ BaseRes + 173, "Nicht genügend Array-Bereiche"       
+ BaseRes + 174, "Ungültige Array-Dimension"         
+ BaseRes + 175, "Ungültiger Array-Bereich"         
+ BaseRes + 176, "Arraytyp erwartet"
+
+ BaseRes + 181, "Zu viele Parameter"
+ BaseRes + 182, "Nicht genügend wirkliche Parameter"
+ BaseRes + 183, "Inkompatible Typen: '%s' und '%s'"
+ BaseRes + 184, "Fehler beim Laden der Bibliothek '%s'"
+ BaseRes + 185, "Falscher Argumententyp im Aufruf der Funktion '%s'"
+ BaseRes + 186, "Falscher Ergebnistyp im Aufruf der Funktion '%s'" 
+ BaseRes + 187, "Auf Prozessadresse der Funktion '%s' kann nicht zugegriffen werden"
+ BaseRes + 188, "Falscher Argumententyp im Aufruf der Funktion '%s'"
+ BaseRes + 189, "Falscher Ergebnistyp im Aufruf der Funktion '%s'"
+ BaseRes + 190, "Ungültige Aufrufkonvention der Funktion '%s'"
+
+ BaseRes + 201, "Aufruf von '%s' verfehlt: '%s'"
+
+ BaseRes + 301, "Ausdruck"
+ BaseRes + 302, "Bezeichner"
+ BaseRes + 303, "Deklaration"
+ BaseRes + 304, "Dateiende"
+ BaseRes + 305, "class declaration"
+
+ BaseRes + 401, "Implementation der Unit nicht gefunden"
+}

@@ -1,0 +1,560 @@
+STHASH Unit: Generic Hash Tables
+================================
+
+The STHASH unit is very similar to the STDICT unit documented in the
+SysTools manual (chapter 7). STHASH implements a class called
+TStHashTable that associates arbitrary lookup values with program
+data. Items can be added, deleted, and quickly looked up in the table.
+STHASH differs from STDICT in only the following ways:
+
+1. The keys in the internal hash table are not limited to strings.
+Instead, the key values are passed to the methods of TStHashTable as
+untyped parameters. As a result, you can hash on pointers, numbers,
+records, as well as strings or other data types. This makes the type
+more abstract, and therefore a little harder to think about, but
+useful for solving more general problems. The TStDictionary class of
+STDICT could now be implemented as a descendant of TStHashTable with
+little additional code, but it hasn't been because this would
+invalidate portions of the SysTools manual. Key values in a given
+TStHashTable instance must all be of equal size as well; TStDictionary
+is more efficient at storing string keys because it allocates memory
+only for the actual length of each string.
+
+2. The number of nodes in the table can be limited to a
+program-specified value. When the number exceeds the limit, the least
+recently used node is automatically ejected from the table. The
+program is informed of this action by calling a virtual method of
+TStHashTable. This behavior is useful if the table is being used to
+manage a cache of items. By default there is no practical limit to the
+number of nodes in the table. The usage recency of a node is updated
+whenever the node is added (the Add method is called), the node's
+existence is checked (Exists is called and the node is found), the
+node's data is sought (Find is called and the node's data is found),
+or the node is merged into a table from another table (Join is
+called).
+
+
+
+TStHashNode Class
+=================
+Entries in a TStHashTable instance are assumed to be objects
+containing the key value and a pointer to some data. This instance is
+encapsulated as a node defined by the TStHashNode class. Every node
+used by a TStHashTable class must be an instance of the TStHashNode
+class.
+
+Class Hierarchy
+  TPersistent     (Classes)
+  -- TStNode      (StBase)
+  ----TStHashNode (StHash)
+
+Properties
+  o LRU
+  o Value
+
+Methods
+  o CreateNode
+    Destroy
+
+Reference Section
+
+CreateNode                                                constructor
+---------------------------------------------------------------------
+  constructor CreateNode(const AValue; AValSize : Cardinal;
+                         AData : Pointer); virtual;
+
+=>CreateNode initializes a node in the hash table.
+
+  AValue is the look-up value for the hash table. Because it is
+  untyped, you can pass anything for the parameter. It should
+  generally be a variable of the same size as used when the hash table
+  was created, however. AValSize is the number of bytes in AValue. For
+  a given hash table, all values must be of the same size, so
+  AValSize gives a misleading sense of flexibility; its value is
+  required so that the node can be properly disposed. AData is a
+  pointer to the data stored by the node, i.e., the definition for the
+  name in the dictionary analogy used in the SysTools manual.
+
+  You don't call this method directly but instead use the Add method
+  of the TStHashTable class. CreateNode allocates heap space to store
+  a copy of the AValue parameter and can fail with an out of memory
+  exception.
+
+LRU                                                          property
+---------------------------------------------------------------------
+  property LRU : LongInt
+
+=>LRU accesses the "least recently used" counter for the node.
+
+  The TStDictionary class keeps a running counter of node accesses.
+  The most recently accessed node has the largest LRU value. When the
+  LRU value reaches MaxLongInt, it wraps to 0 and the LRU values of
+  all nodes are packed into the range 1..Count, maintaining the same
+  order.
+
+  While this property allows write access, you wouldn't usually be
+  doing yourself a favor by updating it.
+
+Value                                              read-only property
+---------------------------------------------------------------------
+  property Value : Pointer
+
+=>Value returns a pointer to the node's look-up value.
+
+  Value points to a copy of the data value passed as the first
+  parameter to CreateNode and to TStDictionary's Add method.
+
+
+
+TStHashTable Class
+==================
+The TStHashTable class implements a general purpose hash table. Each
+element is a node that holds both a key data value and a
+program-specific data pointer. After a node has been added, it can be
+quickly found again and its data pointer returned. TStHashTable uses
+self-updating tables that make it even faster to find recently tested
+elements than to find elements that haven't been accessed in a while.
+It also incorporates LRU (least recently used) management to make it
+possible to throw out the oldest elements when a specified capacity is
+exceeded. Other methods allow you to delete elements, find elements by
+searching for a data pointer, scan all elements, and join two hash
+tables into one.
+
+Sample Program
+  See the THASH.DPR console mode project (WinCRT project in Delphi
+  1.0) for an example of using TStHashTable. This example defines a
+  descendant of TStHashTable that is specific to a particular key data
+  type. In doing so, it allows computed expressions (in this case, for
+  strings) to be passed as parameters to the hash table methods, which
+  is otherwise not possible because of the untyped parameters used by
+  TStHashTable. It also shows the use of the handy Delphi "default"
+  property to treat the hash table as an "associative array". Because
+  the example uses strings as the keys, this allows syntax like:
+
+    MyHashTable['hello'] := P;
+
+  THASH.DPR shows how to create the descendant class, instantiate an
+  instance of the class, set the Hash and Equal properties, add and
+  delete elements, search for elements by key or data value, and store
+  and load a hash table from a stream.
+
+Class Hierarchy
+  TPersistent       (Classes)
+  -- TStContainer   (StBase)
+  ---- TStHashTable (StHash)
+  -- TStNode        (StBase)
+  ----TStHashNode   (StHash)
+
+Properties
+    Compare
+    Count
+    DisposeData
+  o Equal
+  o Hash
+  o HashSize
+    LoadData
+  o MaxNodes
+    StoreData
+  o ValSize
+
+Methods
+  o Add
+  o Clear
+  o Create
+    CreateContainer
+  o Delete
+    Destroy
+    DisposeNodeData
+    EnterCS (p)
+  o Exists
+  o Find
+  o Iterate
+  o Join
+    LeaveCS (p)
+    LoadFromFile
+    LoadFromStream
+  o NodeRemoved
+    StoreToFile
+    StoreToStream
+  o Update
+
+Exceptions
+  EStContainerError
+
+  The exceptions are described in "SysTools Exception Classes" on page
+  13 of the printed manual.
+
+Reference Section
+
+Add                                                            method
+---------------------------------------------------------------------
+  procedure Add(const V; Data : Pointer);
+
+=>Add places a new entry in the hash table.
+
+  V represents the look-up value. It must be unique in the dictionary
+  since duplicate keys are not allowed (an EStContainerError exception
+  with the value stscDupNode is generated if this is attempted). Data
+  is the data value to be associated with the key.
+
+  Because V is untyped, the compiler cannot ensure that you are
+  passing the right variable type. V should be a variable whose size
+  matches the ValSize property of the hash table instance. V is passed
+  on to the instance's hash and equality functions, which will
+  probably generate meaningless results if it is of the wrong type.
+
+  Also because V is untyped, you cannot pass an expression or constant
+  value for this parameter. If you'd like to do so, you either need to
+  assign the expression or constant to a variable first, or you need
+  to create a descendant of TStHashTable that uses typed parameters
+  for Add and the other methods that use untyped parameters. See
+  THASH.DPR for an example.
+
+  Add allocates heap space for a ValSize bytes to hold a copy of V, as
+  well as heap space for a TStHashNode instance.
+
+  See also: Clear, Delete, Exists
+
+Clear                                                          method
+---------------------------------------------------------------------
+  procedure Clear; override;
+
+=>Clear removes all keys and data from the hash table.
+
+  Although this removes all data from the table, it leaves the table
+  intact to allow adding new items. If you want to destroy the table
+  completely, call Free instead. Free calls the TStHashTable's Destroy
+  destructor, which internally calls Clear.
+
+  If the data pointers in the hash table point to records allocated
+  before calling Add, be sure to assign a valid procedure to the
+  instance's DisposeData property, which is responsible for freeing
+  this memory. Clear ends up calling the DisposeData routine for each
+  node that it removes.
+
+  See also: Delete
+
+Create                                                    constructor
+---------------------------------------------------------------------
+  constructor Create(AValSize : Cardinal; AHashSize : Integer); virtual;
+
+=>Create initializes an empty hash table.
+
+  AValSize is the size of each key value stored in the hash table. It
+  should generally be computed by applying the compiler's SizeOf
+  operator to the data type used for each key element. For example, if
+  the keys are pointers, pass SizeOf(Pointer) for AValSize. Whenever a
+  node is added, the table allocates AValSize bytes of heap space to
+  hold a copy of the key value for that node.
+
+  AHashSize is the number of "bins" in the hash table. For best
+  efficiency, this number should equal or exceed the number of
+  elements expected in the hash table. However, the hash table can
+  hold any practical number of elements regardless of the value of
+  AHashSize since each bin is the head of a linked list all of whose
+  elements have a hash number equal to the bin number. In 16-bit
+  applications, AHashSize must be in the range 1..16380. In 32-bit
+  applications, it can be any positive long integer. The constructor
+  allocates two arrays of size 4*AHashSize and this amount of memory
+  must be available or an out of memory exception will be raised.
+
+  Create sets the MaxNodes property to MaxLongInt, effectively putting
+  no limit on the number of nodes that can be in the hash table.
+  Create also sets the Hash and Equal properties to nil. You must
+  assign values to these properties before adding items to the table
+  or else an EStContainerError exception with the value stscNoCompare
+  will be raised.
+
+  See also: Equal, Hash, HashSize, MaxNodes, ValSize
+
+Delete                                                         method
+---------------------------------------------------------------------
+  procedure Delete(const V);
+
+=>Delete removes an entry from the hash table.
+
+  V is a look-up key in the hash table. If it is not found, no action
+  is taken. If it is found, its node is removed. If a DisposeData
+  property has been assigned, this routine is called to deallocate the
+  data pointer that was originally passed to the Add method.
+
+  See also: Add
+
+Equal                                                        property
+---------------------------------------------------------------------
+  property Equal : TUntypedCompareFunc
+
+  TUntypedCompareFunc = function (const El1, El2) : Integer;
+
+=>Equal determines the comparison function used to match keys.
+
+  The equality function is called any time the class searches for an
+  existing element. This occurs during calls to Add, Delete, Exists,
+  Join, and Update. The class first calls the Hash function to
+  determine the appropriate bin to search, and then scans the list of
+  nodes in that bin with the Equal function to look for exact
+  equality.
+
+  TStHashTable provides no default function for Equal because it
+  doesn't know the data type for each key. TUntypedCompareFunc is
+  defined in such a way that it is easy to use existing functions
+  such as AnsiCompareText from the SYSUTILS unit to perform
+  comparisons, or even to use the arithmetic difference between two
+  numbers, depending on the key data type. The Equal function must
+  return 0 if the two parameters are considered equal, or non-zero
+  otherwise.
+
+  The following example is an equality function for comparing pointer
+  or long integer keys. It works because pointers are the same size as
+  long integers in both 16-bit and 32-bit Windows applications.
+
+    function PointerCompare(const El1, El2) : Integer; far;
+    begin
+      if LongInt(El1) = LongInt(El2) then
+        Result := 0
+      else
+        Result := 1;
+    end;
+    ...
+    MyHT.Equal := PointerCompare;
+
+  See also: Hash
+
+Exists                                                         method
+---------------------------------------------------------------------
+  function Exists(const V; var Data : Pointer) : Boolean;
+
+=>Exists checks if an entry is in the hash table.
+
+  If V is found in the hash table, the function returns True and sets
+  Data to the pointer value originally passed to Add. Otherwise, the
+  function returns False and Data is undefined.
+
+  Calling this function moves the found node to the front of its hash
+  bin list, so that frequently accessed entries are found, on average,
+  more quickly. The found node's LRU value is also set to the most
+  recent internal clock value.
+
+  See also: Find
+
+Find                                                           method
+---------------------------------------------------------------------
+  function Find(Data : Pointer; var V) : Boolean;
+
+=>Find searches for specific data in the hash table.
+
+  If Data is found, the function returns True and the key value of the
+  node is returned in V. Otherwise the function returns False and V is
+  uninitialized.
+
+  This function scans the hash table in hash order looking for an
+  exact match of Data against the data pointer stored in each node. If
+  duplicate data values are in the table, the function returns the
+  first one it encounters. The function does not compare the memory
+  pointed to by Data but the actual pointer values. The Iterate method
+  can be used to perform a search that knows how to treat the Data
+  pointer in an application-specific manner.
+
+  See also: Exists, Iterate
+
+Hash                                                         property
+---------------------------------------------------------------------
+  property Hash : THashFunc
+
+  THashFunc = function (const V; Size : Integer) : Integer;
+
+=>Hash sets the hash function.
+
+  The hash function is called whenever the class searches for an
+  existing entry or adds a new entry. This function calculates a value
+  in the range 0..HashSize-1 from the key value, and this "hash code"
+  determines the bin in which the entry will be found or placed. A
+  good hash function uniformly distributes all the elements added to
+  the container among all the bins in the hash table. Writing an
+  optimized hash function is an art that depends on deep understanding
+  of the data type being used and the data actually being added to the
+  table. TStHashTable is forgiving of poor hash functions; the only
+  bad outcome is reduced performance.
+
+  TStHashTable provides no default function for Hash because it
+  doesn't know the data type for each key. You must assign a function
+  of your own devising to Hash after instantiating the instance but
+  before adding elements to the table.
+
+  The following example is a simple way of computing the hash for a
+  pointer or long integer key value. Depending on how the key values
+  are generated, it may or may not be a good hash function in terms of
+  uniformity. Note that "mod Size" is almost always part of a hash
+  function in order to keep its result in the range 0..HashSize-1.
+
+    function PointerHash(const V; Size : Integer) : Integer; far;
+    begin
+      Result := LongInt(V) mod Size;
+    end;
+    ...
+    MyHT.Hash := PointerHash;
+
+  See also: Equal, HashSize
+
+HashSize                                                     property
+---------------------------------------------------------------------
+  property HashSize : Integer
+
+=>HashSize determines the number of bins in the hash table.
+
+  Assigning to this property changes the size of the bin arrays used
+  internally by the class. HashSize must be in the range 1..16384 for
+  16-bit applications and 1..534 million for 32-bit applications. Two
+  new arrays of size 4*HashSize are allocated. If HashSize is outside
+  of the valid range, an EStContainerError exception with stscBadSize
+  error code is raised. If there is insufficient memory to allocate
+  the new tables, an out of memory exception is raised and the
+  contents of the container are lost. If the new arrays are
+  successfully allocated, the contents of the old arrays are
+  transferred to the new bins before the old arrays are deallocated.
+
+  Reading this property returns the current number of bins in the hash
+  table. Note that the Count property returns the total number of
+  elements current in the hash table.
+
+  See also: Hash
+
+Iterate                                                        method
+---------------------------------------------------------------------
+  function Iterate(Action : TIterateFunc;
+                   OtherData : Pointer) : TStHashNode;
+
+  TIterateFunc = function (Container : TStContainer;
+                           Node : TStNode;
+                           OtherData : Pointer) : Boolean;
+
+=>Iterate steps through all the nodes in the hash table.
+
+  Iterate is a fast way of visiting all the nodes in the table to
+  perform any kind of program-specific operation. The Action parameter
+  determines what will be done to each node. As long as the Action
+  function returns True, Iterate will continue to scan more nodes,
+  until it reaches the end of the table. As soon as Action returns
+  False, Iterate stops scanning and returns the last TStHashNode
+  instance it visited. If Action never returns False, Iterate finally
+  returns a nil value.
+
+  OtherData is a pointer that can be used for any purpose by the
+  Action function. For example, it could be a pointer to a data record
+  that Action compares to the current node's data. OtherData is passed
+  along unchanged to the Action function.
+
+  In the Action function, Container is the hash table instance that
+  made the call to Iterate and Node is the current node being visited.
+  Both of these parameters will need to be typecast if the Action
+  function needs to refer to them as TStHashTable and TStHashNode
+  instances, respectively.
+
+  The Clear and Find methods of TStHashTable use Iterate internally to
+  perform their actions. These serve as good examples of the use of
+  Iterate.
+
+  Note that Iterate visits the elements of the table in "hash order."
+  Because a good hash function randomizes the elements in the hash
+  table, the Action function will *not* be called with the elements in
+  any kind of intuitive order.
+
+Join                                                           method
+---------------------------------------------------------------------
+  procedure Join(H : TStHashTable; IgnoreDups : Boolean);
+
+=>Join merges two hash tables.
+
+  H is a separate instance of a hash table that is to be merged into
+  the current one. If IgnoreDups is True, any element in H whose key
+  value matches an entry in the current table is not merged and its
+  node is destroyed. If IgnoreDups is False, any duplication of
+  entries causes the join to be aborted and an EStContainerError
+  exception with stscDupNode error code raised.
+
+  Once the second hash table is merged, it is destroyed.
+
+  Join prevents deadlocks in a multi-threaded 32-bit environment by
+  calling the (internal) EnterClassCS method to enter a class critical
+  section before proceeding. See page 262 of the printed manual for
+  more information.
+
+MaxNodes                                                     property
+---------------------------------------------------------------------
+  property MaxNodes : LongInt
+
+  Default: MaxLongInt
+
+=>MaxNodes determines the maximum number of nodes in the table.
+
+  If more nodes are added to the hash table than the value of
+  MaxNodes, the class automatically throws out the oldest node(s) in
+  the table. "Oldest" means the node that was least recently added or
+  found by the Exists or Find methods.
+
+  Finding the oldest node is a fairly slow process that involves
+  looking at the last node in each hash bin's linked list.
+  TStHashTable does, however, use an algorithm that avoids having to
+  scan every node in the table to find the oldest one.
+
+  See also: NodeRemoved
+
+NodeRemoved                                            virtual method
+---------------------------------------------------------------------
+  procedure NodeRemoved(const V; Data : Pointer); virtual;
+
+=>NodeRemoved is called when a node is automatically removed from the
+  table.
+
+  If you set the MaxNodes property to a value small enough to cause
+  automatic node ejection, you should generally also override this
+  method. It allows you to perform a program-specific action on the
+  removed node. For example, if the hash table is being used to manage
+  a cache of disk pages, the removed page should be flushed back to
+  disk before its information is lost.
+
+  The default implementation of NodeRemoved does nothing.
+
+  When a node is automatically ejected, the code sequence followed by
+  TStHashTable is as follows:
+
+    - find the oldest node
+    - call the NodeRemoved function
+    - destroy the node's data (call the DisposeData function, if any)
+    - remove the node from the table
+
+  Note that the node is destroyed and the DisposeData function called
+  regardless of whether NodeRemoved is overridden.
+
+  See also: MaxNodes
+
+Update                                                         method
+---------------------------------------------------------------------
+  procedure Update(const V; Data : Pointer);
+
+=>Update assigns new data to an existing element.
+
+  V is the look-up key for an existing element. If this key is not
+  found, Update does nothing. Otherwise, it assigns the node's data
+  pointer to the new Data value.
+
+  Note that the old data pointer is *not* automatically disposed by
+  calling DisposeData on it. If you need to do that, call Exists first
+  and dispose the data yourself, then call Update.
+
+  You cannot change an element's key value by calling Update. To do
+  that, call Delete to delete an existing element and then call Add to
+  add it with a new key.
+
+  See also: Add, Delete, Exists
+
+ValSize                                            read-only property
+---------------------------------------------------------------------
+  property ValSize : Cardinal
+
+=>ValSize returns the size of each key value in the hash table.
+
+  The value returned is the same one passed to Create when the
+  container was instantiated. The value cannot be changed without
+  destroying the container and creating a new one.
+

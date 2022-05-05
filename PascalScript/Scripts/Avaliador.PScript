@@ -1,0 +1,43 @@
+Program Avaliador;
+var V: Object;        // um vetor
+    M: Object;        // uma matriz
+    M2: Object;       // outra matriz
+    Display: Object;  // uma visão
+begin
+  // Indicará ao RunTime que deverá ou não liberar toda a 
+  // memória alocada durante a execução do script.
+  // O padrão será TRUE
+  // PascalScript.AutoFreeMemory := True/False;
+
+  V := CreateObject(TwsSFVec, 3);
+  V.Set(1, 0.1);
+  V.Set(2, 0.22);
+  V.Set(3, 0.333);
+
+  M := CreateObject(TwsGeneral, 2, 2);
+  M.Set(1, 1, 0.1);  M.Set(1, 2, 0.3);
+  M.Set(2, 1, 0.2);  M.Set(2, 2, 0.4);
+
+  Display := CreateObject(TOutPut);
+  Display.Write('Vetor:');  V.Print(Display);
+  Display.Write('Matriz:'); M.Print(Display);
+
+{ Eval := CreateObject(TAvaliator);
+  Eval.TabVar.AddVector('V', V, False);
+  Eval.TabVar.AddMatrix('M', M, False);
+  Eval.SetExpression('V * M');
+  M2 := Eval.Evaluate.AsMatrix;
+  FreeObject(Eval);
+  Display.Write('Matriz Resultante:');  M2.Print(Display);
+  FreeObject(M2);
+}
+
+  // Mostra a visão onde foram impressos os resultados
+  Display.Show;
+
+  // Destruição dos objetos criados
+  FreeObject(V);
+  FreeObject(M);
+  FreeObject(Display);
+end.
+ 

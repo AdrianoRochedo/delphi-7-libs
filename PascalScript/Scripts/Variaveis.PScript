@@ -1,0 +1,13 @@
+Program Teste;
+ 
+Var
+  X, A: Integer;
+  B: Boolean;
+  R: Real;  
+ 
+begin
+  B := False;
+  B := True;
+  A := X;
+end.
+

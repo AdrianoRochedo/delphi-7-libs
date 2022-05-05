@@ -1,0 +1,60 @@
+#define BaseRes $5000
+STRINGTABLE
+LANGUAGE LANG_CZECH, 1
+{
+ BaseRes +   0, "Ok"
+ BaseRes +   1, "Neznámá chyba"
+ BaseRes +   2, "Interní chyba interpretu: %s"
+ BaseRes +   3, "Pøerušeno uživatelem"
+ BaseRes +   4, "Znovu vyvolání vyjímky je možno pouze v obsluze vyjímky"
+ BaseRes +   5, "Chyba v unitì '%s' na øádku %d : %s"
+ BaseRes +   6, "Externì v unitì '%s' na øádku %d : %s"
+ BaseRes +   7, "Odepøen pøístup do '%s'"
+ BaseRes +  31, "Záznam '%s' nebyl definován"
+
+ BaseRes +  52, "Pøeteèení zásobníku"
+ BaseRes +  53, "Nevhodný typ"
+ BaseRes +  55, "Nedefinovaná 'main' funkce"
+ BaseRes +  56, "Unita '%s' nebyla nalezena"
+ BaseRes +  57, "Událost '%s' nebyla registrována"
+ BaseRes +  58, "Dfm '%s' nebyla nalezena"
+
+ BaseRes + 101, "Chyba v poznámce"
+ BaseRes + 103, "Oèekáváno %s, ale nalezeno %s"
+ BaseRes + 104, "Nedeklarovaný identifikátor '%s'"
+ BaseRes + 105, "Výraz musí být typu boolean"
+ BaseRes + 106, "Je oèekáván typ class"
+ BaseRes + 107, "';' není podporovaný pøed else"
+ BaseRes + 108, "Výraz musí být typu integer"
+ BaseRes + 109, "Oèekáván typ záznam, object nebo class"
+ BaseRes + 110, "Chybìjící operátor nebo støedník"
+ BaseRes + 111, "Opìtovná deklarace identifikátoru: '%s'"
+
+ BaseRes + 171, "Index pole je mimo jeho rozmìr"
+ BaseRes + 172, "Pøíliš mnoho rozmìrù pole"
+ BaseRes + 173, "Nedostatek rozmìrù pole"
+ BaseRes + 174, "Špatná velikost pole"
+ BaseRes + 175, "Špatný rozsah pole"
+ BaseRes + 176, "Oèekáván typ pole"
+
+ BaseRes + 181, "Pøíliš mnoho parametrù"
+ BaseRes + 182, "Nedostatek parametrù"
+ BaseRes + 183, "Nekompatibilní typy: '%s' a '%s'"
+ BaseRes + 184, "Chyba pøi naèítání knihovny '%s'"
+ BaseRes + 185, "Chybný typ argumentu pøi volání funkce '%s'"
+ BaseRes + 186, "Chybný typ výsledku pøi volání funkce '%s'"
+ BaseRes + 187, "Nemùžu získat adresu funkce '%s'"
+ BaseRes + 188, "Chybný typ argumentu pøi volání funkce '%s'"
+ BaseRes + 189, "Chybný typ výsledku pøi volání funkce '%s'"
+ BaseRes + 190, "Chybná konvence volání funkce '%s'"
+
+ BaseRes + 201, "Volání '%s' se nepovedlo: '%s'"
+
+ BaseRes + 301, "Výraz"
+ BaseRes + 302, "Identifikátor"
+ BaseRes + 303, "Deklarace"
+ BaseRes + 304, "konec souboru"
+ BaseRes + 305, "deklarace tøídy"
+
+ BaseRes + 401, "Implementace unity nebyla nalezena"
+}

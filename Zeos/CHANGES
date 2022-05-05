@@ -1,0 +1,210 @@
+C H A N G E S 
+=============
+
+6.0.12 - 18 July 2003
+- (Seroukhov) Fixed Bug#773400. In plain interface for MySQL 4.0 the
+  name of shared library was 'libmysqld.so' instead of 'libmysqlclient.so'
+- (Seroukhov) Fixed Bug#772926 with incorrect TZDataset.Cancel behaviour.
+- (Seroukhov) Fixed out of range exception in TZDataset.Last method.
+- (Seroukhov) Fixed problem with incorrect order of dataset input parameters.
+- (Fegyverneki) Refresh problem solved
+- (Merkuriev) Fixed Bug#768163 with unsigned int fields in MySQL
+- (Merkuriev) Fixed Bug#804112 AutoCommit Interbase/Firebird transaction problem.
+
+Patch #1
+
+- (Seroukhov) Fixed Bug#793351 access violation when assigning a field value
+- (Fegyverneki) Fixed Bug#791101 Transaction not working with mssql
+- (Fegyverneki) Fixed Bug#791096 List index out of bounds problem when canceling a newly added row.
+- (Seroukhov) Fixed Bug#798336 Not passing large objects to Postgres DB.
+- (Seroukhov) Fixed Bug#799863 Cannot see YEAR type in Delphi.
+
+Patch #2
+
+- (Seroukhov) Fixed Bug#803616 Fail posting inserted and then updated records
+  in cached updates mode.
+- (Seroukhov) Fixed Bug#804323 Calculated fields in read only datasets.
+- (Seroukhov) Fixed Bug#804640 Calculated fields of type TCurrencyField returns always 0.00.
+- (Seroukhov) Fixed Bug#802548 Error "List Index out of Bounds (-1)" in Refresh method.
+- (Seroukhov) Added missed events to TZSQLProcessor. Thanks to Josef Fuchs.
+- (Seroukhov) Added support for LONGTEXT field type in MySQL driver.
+
+
+6.0.11 - 08 July 2003
+- (Seroukhov) Eliminated all overrided methods in API, fixed support
+  for C++ Builder 4,5,6 compilers.
+- (Seroukhov) Added optimization to TZAbstractDODataset.ExecSQL
+  and TZEmulatedPreparedStatement. Now executing prepared statements
+  without parameters about 10 times faster, with parameters - 25% faster.
+- (Seroukhov) Fixed TZConnection.AutoCommit and TZConnection.TransactIsolationLevel
+  property behavior.
+- (Fegyverneki) Loginprompt support added. Delphi4 and Delphi5 needs some extra work.
+- (Merkuriev) Fixed Bug #759184 empty string field return by sql query with concatination fields
+- (Merkuriev) Fixed Bug #707337 emty values for virtual columns
+- (Seroukhov) Added support for quoted parameters in TZQuery and TZUpdateSQL
+- (Seroukhov) Fixed Bug#771217 caused by incorrect processing MySQL table names
+  with special characters like 'my-table'
+- (Seroukhov) Fixed Bug#773022: wrong Query.RecordCount after deletes
+- (Seroukhov) Changed processing of 0000-00-00 dates in MySQL. Now they are treated
+  as NULLs simular to ODBC drivers.
+
+
+6.0.10 - 13 June 2003
+- (Seroukhov) Fixed Bug#752603 in TZDataset.GetFieldData method which
+  set Field.IsNull = True all the time.
+- (Seroukhov) Fixed Bug#753397: in bounds checking in TZCollection.SetCapacity
+  which followed to Access Violation in Delphi 4.
+- (Merkuriev) Finished scripts build & test environment
+- (Merkuriev) Added Kylix2 support
+- (Merkuriev) Fixed test framework and tests for Kylix/Linux support
+- (Seroukhov) Fixed remaining issues with Delphi 4 and 5 compilers.
+  The testing libraries for Delphi 4,5 are work as expected.
+- (Merkuriev) Fixed Interbase datetime parameters 
+- (Fegyverneki) Fixed varbinary datatype. It will be a blob field.
+- (Seroukhov) Fixed bug#750912: Interbase Lookup fields.
+- (Merkuriev) Fixed bug#754009: Cast error while fetching
+- (Merkuriev) Added Firebird 1.5 support
+- (Merkuriev) Fixed leak memory in GetBlob method for MySQL & PostgreSql
+- (Seroukhov) Added support for MySQL 4.0 native client
+- (Seroukhov) Fixed Bug#761300 Memory leak in TZReadOnlyQuery
+- (Fegyverneki) The TDataset's default Translate methode is overriden in order to provide basic oem/ansi translation, 
+  but later it should be database specific.
+- (Fegyverneki) The previous one is removed because it caused more problems than it solved.
+  
+
+6.0.9 - 18 May 2003
+- (Seroukhov) Fixed bugs in TZCollection class and TZAbstractObject.Equals.
+  Thanks for Karl Waclawek.
+- (Seroukhov) Fixed Bug#733209 with incorrect decimal separator in TZToken.GetString.
+  Thanks to Leonardo Quaggiotto.
+- (Seroukhov) Added support for MySQL boolean type  /enum('Y','N')/
+- (Seroukhov) Fixed Bug#726788 with mixed identificators in MySQL
+  Thanks to Maarten Bremer.
+- (Seroukhov) Fixed bug in numeric tokenizer. Combinations of symbols
+  '.e' and '.E' were always processed as numbers. For example:
+  a.eq_id was tokenized as 'a' '.e' 'q_id' instead 'a' '.' 'eq_id'
+- (Merkuriev) Added support Interbase 5, 6.X, Firebird 1.X
+- (Merkuriev) GetImportedKeys, GetExportedKeys, GetIndexInfo done for 
+  Interbase Databse Metadata 
+- (Seroukhov) Fixed Bug#740144 with search by Null fields in TZQuery.Locate
+- (Seroukhov) Fixed Bug#740899. Expressions Field=NULL were not properly converted
+  into Field IS NULL in where clauses.
+- (Seroukhov) Completely rewritten SQL parsers because of peformance reasons.
+- (Seroukhov) Fixed Bug#739514 with national string convertion for postgresql.
+- (Fegyverneki) Fixed Bug#728955 multiple results returned
+- (Fegyverneki) Fixed datatype handling in metadata getColumn to match
+  the modifications via Seroukhov
+- (Seroukhov) Fixed Bug#746225 with updating empty Memo fields.
+- (Merkuriev) Fixed Interbase metadata GetPrimaryKeys, GetProcedures, GetProcedureColumns
+- (Seroukhov) Fixed Bug#739448 with duplicated column names. Now if query
+  returns columns: 'fld','fld','fld', result set will contain display labels
+  'fld','fld_1','fld_2'
+- (Seroukhov) Fixed Bug#733236 with time fields convertion in TDataset.Locate.
+- (Seroukhov) Optimized code, added DISABLE_CHECKING compiler definition into Zeos.inc
+  file. According performance tests this definition gives about 10% speedup.
+- (Merkuriev) Fixed problem with WasNull in fetch processing in InterbaseResultSet.
+- (Merkuriev) Added example - controls.
+- (Seroukhov) Fixed Bug#725053 with empty lookup fields
+- (Seroukhov) Fixed Bug#739707: Variant convertion error in IZPreparedStatement.SetBlob
+- (Fegyverneki) Fixed Numeric scale errors in sybase, was caused by usage of float type instead of double
+- (Fegyverneki) Added a workaround for a bug? in mssql dblib interface. All text like '\'#13 was replaced to just #13. 
+   I just double the backslash in this case.
+
+6.0.8 - 15 April 2003
+- (Seroukhov) Fixed Bug#722651 AV in TZDbcMySQLResultSet.GetTimestamp
+- (Seroukhov) Added caching for Server version and data types in
+  PostgreSQL connection.
+- (Rafael Franco Carvalho) Added packages for Kylix 1 and Kylix 3.
+
+6.0.7 - 13 April 2003
+- (Seroukhov) Fixed Bug#706278 related to performance problems in MySQL 
+- (Seroukhov) Fixed Bug#715099 in TZAbstractRODataset.FindNext
+- (Seroukhov) Added select parser for PostgreSQL
+- (Serouknov) Added generic support for case sensitive catalogs, tables
+  and columns
+- (Seroukhov) Fixed Bug#720785 in CachedResultSet error handling.
+- (Seroukhov) Fixed Bug#720787 in SQL parser performance
+- (Seroukhov) Added GetPChar/SetPChar methods to prevent multiple
+  strings convertion
+- (Seroukhov) Added performance optimization into PreparedStatement
+  and GenericCacheResolver.
+- (Seroukhov) Added packages for Kylix 1
+- (Fegyverneki) Fixed MsSql and Sybase quotation problems
+- (Fegyverneki) Fixed FindColumn to properly support case sensitive and case insensitive columns
+
+6.0.6 - 30 March 2003
+- (Seroukhov) Fixed AV in Dataset.GetFieldData method.
+- (Seroukhov) Set default port for MySQL
+- (Seroukhov) Fixed Bug#707339 caused by incorrect mapping for boolean type.
+- (Seroukhov) Fixed Bug#707337 in PostgreSQL calculated columns.
+- (Seroukhov) Fixed Bug#707364 AV in TZSQLProcessor when exception happens
+- (Fegyverneki) Optimized blob handling internally
+- (Seroukhov) Added SetCachedUpdates method to permit changes after query open.
+- (Seroukhov) Added BeforeRefresh and AfterRefresh events in Query components.
+- (Seroukhov) Added useresult connection parameter for MySQL
+- (Seroukhov) Made several fixes for PostgreSQL blobs.
+- (Dobrota) Added packages for C++ Builder 6.
+
+6.0.5 - 18 March 2003
+- (Seroukhov) Modified transaction support for MySQL. Thanks to Pavel Shibanov
+- (Seroukhov) Added GetSupportedProtocols method to IZDriver
+- (Seroukhov) Added packages for C++ Builder 4,5
+- (Seroukhov) Fixed Access Violation in MySQL.GetColumns
+- (Seroukhov) Fixed behavior of TZDataset.Last method. 
+- (Merkuriev) Added scripts for build & test environment, restructured
+  project packages
+- (Seroukhov) Added a property editor for ZConnection.Protocol
+- (Seroukhov) Added 'oidasblob' connection parameter to PostgreSQL
+    when oidasblob=false (default) Oid fields are treated as integer and bytea
+    fields as Blobs. When oidasblob=true Oid fields represent Blobs and bytea
+    fields are ByteArray[256].
+- (Seroukhov) Added classes for Bug Report Test Cases
+- (Seroukhov) Fixed bug#702368  "... wrong size ..." when column in bytea datatype.
+- (Merkuriev) Fixed PostgreSQLToSQLType for PostgreSQL timestamptz datatype
+- (Seroukhov) Fixed ArrayOutOfBounds exception in TZReadOnlyDataSet.Reread
+- (Seroukhov) Fixed refreshing FieldDefs after SQL query update.
+
+
+6.0.4 - 24 February 2003
+- (Seroukhov) Added a reference implementation for Plain API multiversion support.
+  It includes TZNativeLibraryLoader, IZPlainDriver, IZMySQLPlainDriver and other
+  classes and interfaces.
+- (Seroukhov) Fixed SetTransactionIsolation for MySQL and PostgreSQL.
+- (Seroukhov) Fixed MaxRows in CachedResultSet, MySQLResultSet and PostgreSQLResultSet.
+- (Fegyverneki) Modified SetTransactionIsolation for MsSql and Sybase
+- (Seroukhov) Renamed ZUpdateSql into ZSqlUpdate and ZBlobStream into ZStreamBlob
+  to prevent conflicts with an older zeos version.
+- (Seroukhov) Modified PostgreSQL DBC API to use plain drivers.
+- (Seroukhov) Added ErrorCode to EZSQLException
+- (Seroukhov) Added ZSqlScript component
+
+6.0.3 - 17 February 2003
+- (Fegyverneki) Fixed problem with queries using parameters with the same name
+- (Seroukhov) Implemented persistence for SQL Params in TZDataset and TZUpdateSQL.
+- (Seroukhov) Added DesignTime test application.
+- (Seroukhov) Implemented restoring SQL Params values after SQL query updates.
+
+6.0.2 - 9 February 2003
+- (Seroukhov) Updated project examples
+- (Seroukhov) Implemented reading FieldDefs on closed dataset. This feature is
+  required to work with dataset columns in visual designer.
+- (Seroukhov) Implemented writing PostgreSql blobs.
+- (Seroukhov) Fixed three interface cycle references in Parse API which followed to
+  massive memory leaks. Many thanks to Vincent Mahon, the author of MemCheck utility!
+- (Merkuriev) Added testing framework classes
+- (Seroukhov) Fixed three interface cycle references in DBC API. 
+- (Seroukhov) Changed AbstractDatabaseMetadata and MySQLDatabaseMetadata classes
+  to reduce repeatable code.
+
+6.0.1 - 2 February 2003
+ - (Seroukhov) Fixed date, time and datetime columns handling
+ - (Seroukhov) Implemented support primary keys in autogenerated where clauses
+ - (Seroukhov) Fixed problems with delete and insert in cached updates mode
+ - (Seroukhov) Added synchronization between TZConnection and TZDataset components
+ - (Merkuriev) Added icons and registration for non-visual components
+ - (Fegyverneki) Made numerious changes in MS SQL connectivity API
+
+6.0.0 - 25 January 2003
+  Released the first alpha version with support for MySQL, PostgreSQL,
+  Interbase 6+ and MS SQL.
+

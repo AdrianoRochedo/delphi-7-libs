@@ -1,0 +1,46 @@
+package dclcxLibraryVCLD7;
+
+{$R *.res}
+{$R cxLibraryReg.dcr}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Express Cross Platform Library (VCL Edition) by Developer Express Inc.'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  cxLibraryVCLD7,
+  dbrtl;
+
+contains
+  cxDesignWindows,
+  cxStyleRepositoryEditor,
+  cxPropEditors,
+  cxLibraryReg,
+  cxStyleSheetsLoad,
+  cxPropertiesStoreEditor,
+  cxClassesReg;
+
+end.

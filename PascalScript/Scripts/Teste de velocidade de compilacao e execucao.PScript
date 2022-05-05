@@ -1,0 +1,1988 @@
+Program Teste;
+ 
+Var
+   X, A: Real;
+   I   : Integer;
+ 
+begin
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 2000 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 20 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+
+   A := 10;
+  
+   X := 1 + 3 * 2;       {7}
+   X := X + 1;           {8}
+   X := X * (1 + 1);     {16}
+
+   A := X * A; 
+
+   if (A = 160) and (x <> 20 * A) then
+      if X = 11 then
+          X := 1
+      else
+         X := 2;
+
+   i := 0;
+   while i < 2000 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+end.
+

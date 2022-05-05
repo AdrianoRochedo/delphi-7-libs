@@ -1,0 +1,30 @@
+<HTML>
+<center>
+<H3>TeeChart-Pro 3.0 ActiveX Form Example</H3>
+<A HREF=teeax2.htm>Click Here if you cannot see the TeeChart below.</A>
+<p>
+<OBJECT
+  classid="clsid:6EFF2423-BF09-11D0-B4DF-00A0C901D681"
+  codebase="TeeAX.inf"
+  id=Form1
+  width=575
+  height=320
+  align=center
+  hspace=0
+  vspace=0
+>
+</OBJECT>
+<p>
+
+<p>
+    <SCRIPT LANGUAGE="VBS">
+    SUB DoChart
+        if Form1.ChartColor=255 then
+           Form1.ChartColor=32768
+        else
+           Form1.ChartColor=255
+        end if
+    END SUB
+    </SCRIPT>
+    <INPUT TYPE=BUTTON VALUE="Example: Change the Chart Color using Visual Basic Script" NAME="cdmChartColor" onClick="DoChart">
+</HTML>

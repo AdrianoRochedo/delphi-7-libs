@@ -1,0 +1,20 @@
+Program TesteFOR;
+ 
+Var i, ii  : Real;
+    Saida  : Object;
+
+begin
+  Saida := CreateObject(TOutPut);
+
+  for i := 1.1 to 2.5 step 0.01 do
+    Saida.WriteLN(ValToStr(i));
+
+  Saida.WriteLN('');
+
+  for i := 2.5 downto 1.1 step 0.01 do
+    Saida.WriteLN(ValToStr(i));
+
+  Saida.Show;
+  FreeObject(Saida);
+end.
+

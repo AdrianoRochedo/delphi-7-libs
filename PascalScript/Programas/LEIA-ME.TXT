@@ -1,0 +1,14 @@
+CONFIGURACOES:
+
+  - No arquivo "PascalScriptLibs.ini" localizado no mesmo diretorio onde
+    estao os programas, indique o diretorio das DLLs (bibliotecas)
+    do Pascal Script
+
+  Ex:
+        X:\Programacao\Pascal Script\DLLs
+
+-------------//----------------------//------------------
+
+O programa "Registrar.exe", registrara no Windows
+as extensoes dos arquivos de Scripts (*.pscript) possibilitando serem acessados 
+via menu de contexto.

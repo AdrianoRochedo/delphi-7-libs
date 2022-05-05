@@ -1,0 +1,14 @@
+var A: real;
+    B: real;
+    C: real;
+
+    function X(A: real): real;
+    begin
+      Result := A + A;
+    end;
+
+begin
+  A := 1.1;
+  B := SQR( X(A) );  // ADD PAR RESULT  (RESULT sem endereco)
+  C := X(A); // := RESULT C  (RESULT com endereco)
+end.

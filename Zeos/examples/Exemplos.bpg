@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = TestControls.exe ZDesignTime.exe ZSimple.exe ZBlobs.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+TestControls.exe: controls\TestControls.dpr
+  $(DCC)
+
+ZDesignTime.exe: design\ZDesignTime.dpr
+  $(DCC)
+
+ZSimple.exe: simple\ZSimple.dpr
+  $(DCC)
+
+ZBlobs.exe: blobs\ZBlobs.dpr
+  $(DCC)
+
+

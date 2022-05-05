@@ -1,0 +1,21 @@
+Patch #2 for ZeosLib 6.0.12 
+===========================
+
+This is a This patch addresses the following problems:
+
+- Fixed Bug#803616 Fail posting inserted and then updated records
+  in cached updates mode.
+- Fixed Bug#804323 Calculated fields in read only datasets.
+- Fixed Bug#804640 Calculated fields of type TCurrencyField returns always 0.00.
+- Fixed Bug#802548 Error "List Index out of Bounds (-1)" in Refresh method.
+- Added missed events to TZSQLProcessor. Thanks to Josef Fuchs.
+- Added support for LONGTEXT field type in MySQL driver.
+- Fixed problems with Interbase/Firebird transactions
+
+The installation procedure is simple: unzip the patch archive in zeosdbo installation directory,
+then recompile and reinstall the components.
+
+Thanks for you continuing support,
+The ZeosLib development team.  
+ 
+

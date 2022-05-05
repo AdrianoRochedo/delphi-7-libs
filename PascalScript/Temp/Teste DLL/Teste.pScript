@@ -1,0 +1,5 @@
+var x: Real;
+begin
+  P1;
+  x := F1(2);
+end.

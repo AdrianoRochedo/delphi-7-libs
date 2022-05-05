@@ -1,0 +1,26 @@
+Program Teste_Panilha;
+Var
+   i, ii  : Integer;
+   S      : String;
+   P      : Object;
+   V      : Object;
+begin
+  P := CreateObject(TPlanilha);
+
+  P.SetCellFont(1, 1, 'ARIAL', 14, 0, True, True, False);
+  P.Write(1, 1, 'Adriano');
+
+  for i := 5 to 10 do P.WriteFloatCenter(i, 3, i*0.3);
+
+  //V := CreateObject(TwsDFVec, 100);
+  //V.Fill(3.1415);
+  //P.WriteVecInCol(V, 5, 1);
+  //FreeObject(V);
+
+  P.Show;
+  P.SaveToFile('D:\temp\ScriptPlanilha.xls', 'xls');
+  P.SaveToFile('D:\temp\ScriptPlanilha.txt', 'TXT');
+
+  KeepRun;
+end.
+

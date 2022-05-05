@@ -1,0 +1,48 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = ractl5.bpl radb5.bpl rai5.bpl dclractl5.bpl dclradb5.bpl dclrai5.bpl \
+  raia5.bpl rafd5.bpl dfdstd5.bpl dfddb5.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+ractl5.bpl: ractl5.dpk
+  $(DCC)
+
+radb5.bpl: radb5.dpk
+  $(DCC)
+
+rai5.bpl: rai5.dpk
+  $(DCC)
+
+raia5.bpl: raia5.dpk
+  $(DCC)
+
+dclractl5.bpl: dclractl5.dpk
+  $(DCC)
+
+dclradb5.bpl: dclradb5.dpk
+  $(DCC)
+
+dclrai5.bpl: dclrai5.dpk
+  $(DCC)
+
+rafd5.bpl: rafd5.dpk
+  $(DCC)
+
+dfdstd5.bpl: ..\DPacks\dfdstd5.dpk
+  $(DCC)
+
+dfddb5.bpl: ..\DPacks\dfddb5.dpk
+  $(DCC)
+
+

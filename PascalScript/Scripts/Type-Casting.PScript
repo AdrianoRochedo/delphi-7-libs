@@ -1,0 +1,10 @@
+program Type_Casting;
+var
+  x: Object;
+  v: Object;
+begin
+  v := CreateObject(TwsLIVec, 10);
+  x := TwsVec(v);
+  x.Set(1, 3.5); 
+  FreeObject(x);
+end.

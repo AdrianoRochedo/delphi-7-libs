@@ -1,0 +1,9 @@
+Program Negacao;
+var x: boolean;
+    i: Integer;
+begin
+  x := not false;
+  i := -2;
+  if true or false then i := 3;
+end.
+ 

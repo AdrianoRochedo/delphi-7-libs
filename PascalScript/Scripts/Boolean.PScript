@@ -1,0 +1,5 @@
+Program Teste_Boolean;
+begin
+  ShowMessage(BooleanToStr(true));
+end.
+ 

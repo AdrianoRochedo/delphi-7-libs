@@ -1,0 +1,10 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\*\shell\R&A Notepad]
+
+[HKEY_CLASSES_ROOT\*\shell\R&A Notepad\]
+@="R&&A Notepad"
+
+[HKEY_CLASSES_ROOT\*\shell\R&A Notepad\command]
+@="\"E:\\Lib\\RALib\\Demos\\RANotepad\\ranotepad.exe\" %1"
+

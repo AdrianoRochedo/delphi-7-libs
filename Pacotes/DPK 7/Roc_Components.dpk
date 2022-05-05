@@ -1,0 +1,66 @@
+package Roc_Components;
+
+{$R *.res}
+{$R '..\..\Geral\Execfile.dcr'}
+{$R '..\..\Geral\Componentes_Melhorados.dcr'}
+{$R '..\..\Geral\Extpanel.dcr'}
+{$R '..\..\Geral\Led.dcr'}
+{$R '..\..\Geral\gridx32.dcr'}
+{$R '..\..\Geral\Liquid_Indicator.dcr'}
+{$R '..\..\Geral\LsFileExplorer28.dcr'}
+{$R '..\..\Geral\drEdit.dcr'}
+{$R '..\..\Geral\SysTray.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Componentes do Rochedo'}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  Roc_Base,
+  vcljpg,
+  dbrtl,
+  dsnap,
+  designide,
+  dclocx,
+  VclSmp,
+  TeeUI44,
+  tee44,
+  TeePro44;
+
+contains
+  Led in '..\..\Geral\Led.pas',
+  Extpanel in '..\..\Geral\EXTPANEL.PAS',
+  Execfile in '..\..\Geral\Execfile.pas',
+  Gaugefo in '..\..\Geral\GaugeFo.pas' {DLG_Progress},
+  Componentes_Melhorados in '..\..\Geral\Componentes_Melhorados.pas',
+  gridx32 in '..\..\Geral\gridx32.pas',
+  Liquid_Indicator in '..\..\Geral\Liquid_Indicator.pas',
+  LsFileExplorer28 in '..\..\Geral\LsFileExplorer28.pas',
+  drEdit in '..\..\Geral\drEdit.pas',
+  SysTray in '..\..\Geral\SysTray.pas',
+  Rochedo.TrackBar in '..\..\Geral\Rochedo.TrackBar.pas',
+  Rochedo.PanZoom in '..\..\Geral\Rochedo.PanZoom.pas';
+
+end.

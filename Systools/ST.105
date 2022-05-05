@@ -1,0 +1,17 @@
+This file summarizes changes made between SysTools versions 1.04 and 1.04.
+It is of interest primarily to users who have upgraded from version 1.04.
+
+Bugs fixed
+---------------------------------------------------------------------------
+STUTILS   - GetDiskInfo doesn't work very well with FAT32 drives
+STASTRO   - RiseSetPrim returned wrong value for objects that never rise or
+            set. May affect RiseSet, Twilight, and AmountOfSunlight
+            functions (depends on time of year and latitude)
+          - Rise/Set and Twilight functions did not account fully for
+            possibility of dates being out of range of MinDate..MaxDate.
+
+
+New Features / Enhancements
+---------------------------------------------------------------------------
+All units: - Added new version of TurboPower String Resource Manager
+

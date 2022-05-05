@@ -1,0 +1,17 @@
+  function DuplicaSTR2(s: String): String;
+  begin
+    Result := s + s;
+  end;
+
+  function DuplicaSTR(s: String): String;
+  begin
+    Result := s + s;
+  end;
+
+var r: Real;
+    s: String;
+begin
+  s := 'Adriano';
+  s := DuplicaSTR(s);
+  ShowMessage(s);
+end.

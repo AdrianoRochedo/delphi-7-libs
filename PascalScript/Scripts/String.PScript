@@ -1,0 +1,18 @@
+Program TesteComStrings;
+ 
+Var
+   X, A: Real;
+   S: String;
+ 
+begin
+  S := 'Adriano';
+  if s <> 'adriano' then 
+     showmessage('"Adriano" é diferente de "adriano"');
+
+  S := S + ' Rochedo Conceicao';
+  ShowMessage(S + ' é quem fez este compilador !');
+
+  X := SQR(4);
+  ShowMessage('O valor de X é: ' + ValToStr(X));
+end.
+

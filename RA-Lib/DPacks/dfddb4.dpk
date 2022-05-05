@@ -1,0 +1,42 @@
+package dfddb4;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'Database components'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl40,
+  vcldb40,
+  ractl4,
+  dfdstd4;
+
+contains
+  fddbreg in 'fddbreg.pas',
+  fDefineField in 'fDefineField.pas' {DefineField},
+  fDataSetEditor in 'fDataSetEditor.pas' {DatasetEditor},
+  fDBGridColumnsEditor in 'fDBGridColumnsEditor.pas' {DBGridColumnsEditor},
+  fAddFields in 'fAddFields.pas' {AddFields};
+
+end.

@@ -1,0 +1,46 @@
+package Roc_Base;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Biblioteca básica do Rochedo'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  xmlrtl;
+
+contains
+  SysUtilsEx in '..\..\Geral\SysUtilsEx.pas',
+  WinUtils in '..\..\Geral\WinUtils.pas',
+  Lists in '..\..\Geral\Lists.pas',
+  RegistryUtils in '..\..\Geral\RegistryUtils.pas',
+  Arrays in '..\..\Geral\Arrays.pas',
+  DialogsEx in '..\..\Geral\DialogsEx.pas' {MessageDlg2},
+  Simulation in '..\..\Geral\Simulation.pas',
+  XML_Interfaces in '..\..\XML\XML_Interfaces.pas',
+  MessageManager in '..\..\Geral\MessageManager.pas';
+
+end.

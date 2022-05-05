@@ -1,0 +1,67 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySQLDriverCS", "MySQLDriverCS.csproj", "{6AEB881A-22F4-4BDD-8B02-68A995AB94BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_Reader", "..\samples\Sample1\Sample_Reader.csproj", "{2F8FF061-0F3E-484F-BDD8-03027D2CF817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_Insert-Update-Delete", "..\samples\InsertOrUpdate\Sample_Insert-Update-Delete.csproj", "{6D393CAF-28CD-47D9-954D-EA4B7162251E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VBSample_Reader", "..\samples\VBSample_Reader\VBSample_Reader.vbproj", "{140EF3F9-F52F-4E77-877E-7D7257F4A211}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccProjectName0 = \u0022$/MySQLDriverCS\u0022,\u0020LOBAAAAA
+		SccLocalPath0 = ..
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection0 = MySQLDriverCS\\
+		SolutionUniqueID = {C45968F2-F376-497C-83A2-15AA9C18616E}
+		SccProjectUniqueName1 = MySQLDriverCS.csproj
+		SccLocalPath1 = ..
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = MySQLDriverCS\\
+		SccProjectUniqueName2 = ..\\samples\\InsertOrUpdate\\Sample_Insert-Update-Delete.csproj
+		SccLocalPath2 = ..
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = samples\\InsertOrUpdate\\
+		SccProjectUniqueName3 = ..\\samples\\Sample1\\Sample_Reader.csproj
+		SccLocalPath3 = ..
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection3 = samples\\Sample1\\
+		SccProjectUniqueName4 = ..\\samples\\VBSample_Reader\\VBSample_Reader.vbproj
+		SccProjectName4 = \u0022$/MySQLDriverCS/samples/VBSample_Insert-Update-Delete\u0022,\u0020YPBAAAAA
+		SccLocalPath4 = ..\\samples\\VBSample_Reader
+		CanCheckoutShared = false
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6AEB881A-22F4-4BDD-8B02-68A995AB94BA}.Debug.ActiveCfg = Debug|.NET
+		{6AEB881A-22F4-4BDD-8B02-68A995AB94BA}.Debug.Build.0 = Debug|.NET
+		{6AEB881A-22F4-4BDD-8B02-68A995AB94BA}.Release.ActiveCfg = Release|.NET
+		{6AEB881A-22F4-4BDD-8B02-68A995AB94BA}.Release.Build.0 = Release|.NET
+		{2F8FF061-0F3E-484F-BDD8-03027D2CF817}.Debug.ActiveCfg = Debug|.NET
+		{2F8FF061-0F3E-484F-BDD8-03027D2CF817}.Debug.Build.0 = Debug|.NET
+		{2F8FF061-0F3E-484F-BDD8-03027D2CF817}.Release.ActiveCfg = Release|.NET
+		{2F8FF061-0F3E-484F-BDD8-03027D2CF817}.Release.Build.0 = Release|.NET
+		{6D393CAF-28CD-47D9-954D-EA4B7162251E}.Debug.ActiveCfg = Debug|.NET
+		{6D393CAF-28CD-47D9-954D-EA4B7162251E}.Debug.Build.0 = Debug|.NET
+		{6D393CAF-28CD-47D9-954D-EA4B7162251E}.Release.ActiveCfg = Release|.NET
+		{6D393CAF-28CD-47D9-954D-EA4B7162251E}.Release.Build.0 = Release|.NET
+		{140EF3F9-F52F-4E77-877E-7D7257F4A211}.Debug.ActiveCfg = Debug|.NET
+		{140EF3F9-F52F-4E77-877E-7D7257F4A211}.Debug.Build.0 = Debug|.NET
+		{140EF3F9-F52F-4E77-877E-7D7257F4A211}.Release.ActiveCfg = Release|.NET
+		{140EF3F9-F52F-4E77-877E-7D7257F4A211}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Item:1 = ..\..\install-nsis\README.txt
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

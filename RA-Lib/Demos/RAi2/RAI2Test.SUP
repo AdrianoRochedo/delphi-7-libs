@@ -1,0 +1,5 @@
+//SUPPRESSIONPROJ:RAI2Test
+//VERSION:5.00
+//ENABLE:Yes
+!include Delphi.sup
+

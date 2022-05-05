@@ -1,0 +1,2 @@
+ - Gerenciamento das camadas
+ - Criacao de camadas em branco

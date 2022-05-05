@@ -1,0 +1,29 @@
+Program Leitura_Panilha;
+Var p: Object;          // Planilha
+    v, v2, v3 : Object; // Vetores
+    o: Object;          // Display
+begin
+  o := CreateObject(TOutPut);
+
+  P := CreateObject(TPlanilha);
+  P.LoadFromFile('F:\Projetos\Comum\PascalScript\Scripts\teste.xls');
+  P.Show;
+
+  v  := P.ColToVec(1, 3, 10);
+  v2 := P.ColToVec2(2, 3);
+  v3 := P.RowToVec2(2, 1);
+
+  o.Write('P.ColToVec(1, 3, 10)');  v.Print(o);
+  o.Write('P.ColToVec2(2, 3)');    v2.Print(o);
+  o.Write('P.RowToVec2(2, 1)');    v3.Print(o);
+
+  o.Show;
+
+  FreeObject(o);
+  FreeObject(v);
+  FreeObject(v2);
+  FreeObject(v3);
+  // A Planilha não precisa ser destruída
+  KeepRun;
+end.
+

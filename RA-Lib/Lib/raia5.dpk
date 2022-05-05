@@ -1,0 +1,64 @@
+package raia5;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'R&A interpreter 2 Adapters'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl50,
+  VCLX50,
+  VCLDB50,
+  QRPT50,
+  ractl5,
+  rai5,
+  INET50;
+
+contains
+  RAI2_Windows in 'RAI2_Windows.pas',
+  RAI2_Classes in 'RAI2_Classes.pas',
+  RAI2_ComCtrls in 'RAI2_ComCtrls.pas',
+  RAI2_Controls in 'RAI2_Controls.pas',
+  RAI2_Db in 'RAI2_Db.pas',
+  RAI2_DbCtrls in 'RAI2_DbCtrls.pas',
+  RAI2_DbGrids in 'RAI2_DbGrids.pas',
+  RAI2_DBTables in 'RAI2_DBTables.pas',
+  RAI2_Dialogs in 'RAI2_Dialogs.pas',
+  RAI2_Extctrls in 'RAI2_Extctrls.pas',
+  RAI2_Forms in 'RAI2_Forms.pas',
+  RAI2_Graphics in 'RAI2_Graphics.pas',
+  RAI2_Grids in 'RAI2_Grids.pas',
+  RAI2_Menus in 'RAI2_Menus.pas',
+  RAI2_Quickrpt in 'RAI2_Quickrpt.pas',
+  RAI2_RAEditor in 'RAI2_RAEditor.pas',
+  RAI2_RARegAuto in 'RAI2_RARegAuto.pas',
+  RAI2_RAUtils in 'RAI2_RAUtils.pas',
+  RAI2_StdCtrls in 'RAI2_StdCtrls.pas',
+  RAI2_System in 'RAI2_System.pas',
+  RAI2_SysUtils in 'RAI2_SysUtils.pas',
+  RAI2_all in 'RAI2_all.pas',
+  RAI2_httpapp in 'RAI2_httpapp.pas',
+  RAI2_contnrs in 'RAI2_contnrs.pas';
+
+end.

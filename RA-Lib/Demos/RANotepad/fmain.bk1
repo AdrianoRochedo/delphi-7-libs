@@ -1,0 +1,642 @@
+unit fMain;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  RARegAuto, ComCtrls, RAEditor, RAHLEditor, Menus,
+  ShellApi, RAI2, RACt;
+
+const
+  WM_CHECKFILEMODIFIED = WM_USER + $101;
+
+type
+  TMain = class(TForm)
+    RegAuto1: TRegAuto;
+    RAHLEditor1: TRAHLEditor;
+    StatusBar: TRAStatusBar;
+    MainMenu1: TMainMenu;
+    miFile: TMenuItem;
+    miFileOpen: TMenuItem;
+    N1: TMenuItem;
+    miExit: TMenuItem;
+    miFileSave: TMenuItem;
+    miFileSaveAs: TMenuItem;
+    raCommon: TRegAuto;
+    N2: TMenuItem;
+    miHelpAbout: TMenuItem;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    FindDialog1: TFindDialog;
+    ReplaceDialog1: TReplaceDialog;
+    miSearch: TMenuItem;
+    Search1: TMenuItem;
+    miSearchAgain: TMenuItem;
+    miSearchReplace: TMenuItem;
+    N3: TMenuItem;
+    miOptions: TMenuItem;
+    PopupMenu1: TPopupMenu;
+    miEditorProperties: TMenuItem;
+    RAI2Program1: TRAI2Program;
+    procedure RAHLEditor1ChangeStatus(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure miFileSaveClick(Sender: TObject);
+    procedure miHelpAboutClick(Sender: TObject);
+    procedure miExitClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure raCommonAfterLoad(Sender: TObject);
+    procedure miFileOpenClick(Sender: TObject);
+    procedure miFileSaveAsClick(Sender: TObject);
+    procedure Search1Click(Sender: TObject);
+    procedure miSearchAgainClick(Sender: TObject);
+    procedure miSearchReplaceClick(Sender: TObject);
+    procedure miOptionsClick(Sender: TObject);
+    procedure miEditorPropertiesClick(Sender: TObject);
+    procedure raCommonAfterSave(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure RAI2Program1GetValue(Sender: TObject; Identifer: String;
+      var Value: Variant; Args: TArgs; var Done: Boolean);
+    procedure RAHLEditor1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure RAHLEditor1KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure RAHLEditor1KeyPress(Sender: TObject; var Key: Char);
+    procedure RAI2Program1GetUnitSource(UnitName: String;
+      var Source: String; var Done: Boolean);
+    procedure FindDialog1Find(Sender: TObject);
+  private
+    FFileName: TFileName;
+    FileTime: Integer;
+    Exts: array[THighlighter] of string;
+    Capt: string;
+    procedure OpenFile(AFileName: TFileName);
+    procedure SetHighlighter;
+    procedure LoadColors;
+    procedure UpdateCaption;
+    procedure CheckSave;
+    procedure UpdateEditorSettings;
+    procedure WMDropFiles(var Message: TMessage); message WM_DROPFILES;
+    procedure FindNext;
+    procedure CheckFileModified;
+    procedure ApplicationActivate(Sender: TObject);
+    procedure WMCheckFileModified(var Message: TMessage); message WM_CHECKFILEMODIFIED;
+  private { RAI2 support }
+    RAI2FileName: TFileName;
+    Args: TArgs;
+    procedure ErrorLogFmt(const Message: string; const Args: array of const);
+    function RAI2Script: boolean;
+    procedure RAI2Initialize;
+    procedure RAI2UnInitialize;
+    function RAI2SafeCall(const FunName: string; Args: TArgs;
+      Params: array of Variant): Variant;
+    procedure RAI2FileOpened;
+    procedure RAI2FileClosed;
+  public
+    { Public declarations }
+  end;
+
+var
+  Main: TMain;
+
+implementation
+
+uses{>>GpProfile U} GpProf, {GpProfile U>>} RAUtils, iMTracer, fParams,
+  RAI2_System, RAI2_Windows, RAI2_SysUtils,
+  RAI2_Graphics, RAI2_Classes, RAI2_Controls,
+  RAI2_StdCtrls, RAI2_ComCtrls, RAI2_ExtCtrls, RAI2_Forms,
+  RAI2_Menus, RAI2_Dialogs,
+  RAI2Fm,
+  RAI2_RAEditor, RAI2_RARegAuto
+  ;
+
+{$R *.DFM}
+
+const
+  PadExt = '.pad'; { extension for macro-files }
+
+{
+procedure FailProc;
+var
+  Func: procedure; far;
+begin
+end;
+}
+
+procedure TMain.RAHLEditor1ChangeStatus(Sender: TObject);
+const
+  Modi: array[boolean] of string[10] = ('', 'Modified');
+  Modes: array[boolean] of string[10] = ('Overwrite', 'Insert');
+begin{>>GpProfile} ProfilerEnterProc(1); try {GpProfile>>}
+  with StatusBar, RAHLEditor1 do
+  begin
+    Panels[0].Text := IntToStr(CaretY + 1) + ':' + IntToStr(CaretX + 1);
+    Panels[1].Text := Modi[Modified];
+    if ReadOnly then
+      Panels[2].Text := 'ReadOnly'
+    else if Recording then
+      Panels[2].Text := 'Recording'
+    else
+      Panels[2].Text := Modes[InsertMode];
+    miFileSave.Enabled := Modified;
+  end;
+{>>GpProfile} finally ProfilerExitProc(1); end; {GpProfile>>}end;
+
+procedure TMain.OpenFile(AFileName: TFileName);
+begin{>>GpProfile} ProfilerEnterProc(2); try {GpProfile>>}
+ {$IFDEF RA_D3H}
+  AFileName := TargetFileName(AFileName);
+ {$ENDIF RA_D3H}
+  RAHLEditor1.BeginUpdate;
+  try
+    RAHLEditor1.Lines.LoadFromFile(AFileName);
+    FileTime := FileAge(AFileName);
+    RAHLEditor1.SetLeftTop(0, 0);
+    RAHLEditor1.Modified := False;
+    RAHLEditor1ChangeStatus(nil);
+    FFileName := AFileName;
+    SetHighlighter;
+    UpdateCaption;
+    Application.BringToFront;
+    RAI2FileOpened;
+  finally
+    RAHLEditor1.EndUpdate;
+  end;
+{>>GpProfile} finally ProfilerExitProc(2); end; {GpProfile>>}end;
+
+procedure TMain.CheckFileModified;
+begin{>>GpProfile} ProfilerEnterProc(3); try {GpProfile>>}
+  if FFileName = '' then Exit;
+  if FileExists(FFileName) then
+  begin
+    if FileTime <> FileAge(FFileName) then
+    begin
+      if RAHLEditor1.Modified then
+        if MessageDlg('File time/date changed.'#13 +
+           'Reload ?'#13#13 +
+           'WARNING: Document has been modified.',
+           mtWarning, [mbYes, mbNo], 0) = idYes then
+          OpenFile(FFileName) else
+      else
+        if MessageDlg('File time/date changed.'#13 +
+           'Reload ?', mtInformation, [mbYes, mbNo], 0) = idYes then
+          OpenFile(FFileName);
+    end;
+  end
+  else
+    { сообщить, что мол файл надо бы куда-нибудь сохранить }
+    MessageDlg('File removed from disk.'#13 +
+      'Choose File|SaveAs menu item to save file.',
+       mtWarning, [mbOK], 0);
+{>>GpProfile} finally ProfilerExitProc(3); end; {GpProfile>>}end;
+
+procedure TMain.ApplicationActivate(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(4); try {GpProfile>>}
+  PostMessage(Handle, WM_CHECKFILEMODIFIED, 0, 0);
+{>>GpProfile} finally ProfilerExitProc(4); end; {GpProfile>>}end;
+
+procedure TMain.WMCheckFileModified(var Message: TMessage);
+begin{>>GpProfile} ProfilerEnterProc(5); try {GpProfile>>}
+  CheckFileModified;
+{>>GpProfile} finally ProfilerExitProc(5); end; {GpProfile>>}end;
+
+procedure TMain.miFileSaveClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(6); try {GpProfile>>}
+  RAHLEditor1.Lines.SaveToFile(FFileName);
+  FileTime := FileAge(FFileName);
+  RAHLEditor1.Modified := False;
+  RAHLEditor1ChangeStatus(nil);
+{>>GpProfile} finally ProfilerExitProc(6); end; {GpProfile>>}end;
+
+procedure TMain.FormCreate(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(7); try {GpProfile>>}
+  Application.OnActivate := ApplicationActivate;
+  Capt := Caption;
+  raCommon.IniFile := ExePath + 'ranotepad.ini';
+  Exts[hlPascal] := '*.pas;*.dpk;*.dpr;*.inc;*.pad';
+  Exts[hlCBuilder] := '*.cpp;*.c;*.hpp;*.h';
+  Exts[hlSql] := '*.sql';
+  Exts[hlPython] := '*.py';
+  Exts[hlJava] := '*.java';
+  Exts[hlVB] := '*.bas';
+  Exts[hlHtml] := '*.htm;*.html;*.asp';
+  DragAcceptFiles(Handle, True);
+  raCommon.Load;
+  RAI2Initialize;
+
+  if ParamCount > 0 then
+    OpenFile(GetParameter);
+{>>GpProfile} finally ProfilerExitProc(7); end; {GpProfile>>}end;
+
+procedure TMain.FormDestroy(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(8); try {GpProfile>>}
+  RAI2UnInitialize;
+  raCommon.Save;
+{>>GpProfile} finally ProfilerExitProc(8); end; {GpProfile>>}end;
+
+procedure TMain.UpdateEditorSettings;
+begin{>>GpProfile} ProfilerEnterProc(9); try {GpProfile>>}
+  RAHLEditor1.DoubleClickLine := Params.DoubleClickLine;
+  RAHLEditor1.KeepTrailingBlanks := Params.KeepTrailingBlanks;
+  RAHLEditor1.AutoIndent := Params.AutoIndent;
+  RAHLEditor1.SmartTab := Params.SmartTab;
+  RAHLEditor1.BackspaceUnindents := Params.BackspaceUnindents;
+  RAHLEditor1.CursorBeyondEOF := Params.CursorBeyondEOF;
+  RAHLEditor1.TabStops := Params.TabStops;
+  SetHighlighter;
+{>>GpProfile} finally ProfilerExitProc(9); end; {GpProfile>>}end;    { UpdateEditorSettings }
+
+procedure TMain.SetHighlighter;
+var
+  Ext: TFileName;
+  i, H: THighlighter;
+begin{>>GpProfile} ProfilerEnterProc(10); try {GpProfile>>}
+  Ext := ExtractFileExt(FFileName);
+  H := hlNone;
+  if Params.SytaxHighlighting then
+    for i := Low(THighlighter) to High(THighlighter) do
+      if FileEquMasks(FFileName, Exts[i]) then
+      begin
+        H := i;
+        break;
+      end;
+  RAHLEditor1.HighLighter := H;
+  LoadColors;
+{>>GpProfile} finally ProfilerExitProc(10); end; {GpProfile>>}end;
+
+procedure TMain.raCommonAfterSave(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(11); try {GpProfile>>}
+  Params.Save(raCommon);
+{>>GpProfile} finally ProfilerExitProc(11); end; {GpProfile>>}end;
+
+procedure TMain.raCommonAfterLoad(Sender: TObject);
+var
+  i: THighlighter;
+begin{>>GpProfile} ProfilerEnterProc(12); try {GpProfile>>}
+  for i := Low(THighlighter) to High(THighlighter) do
+    Exts[i] := Trim(raCommon.ReadString('Highlighters', HighLighters[i], Exts[i]));
+  Params.Restore(raCommon);
+  UpdateEditorSettings;
+{>>GpProfile} finally ProfilerExitProc(12); end; {GpProfile>>}end;
+
+procedure TMain.LoadColors;
+begin{>>GpProfile} ProfilerEnterProc(13); try {GpProfile>>}
+  Params.LoadColors(raCommon, HighLighters[RAHLEditor1.HighLighter], RAHLEditor1);
+{>>GpProfile} finally ProfilerExitProc(13); end; {GpProfile>>}end;
+
+procedure TMain.miHelpAboutClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(14); try {GpProfile>>}
+  MessageBox('R&A Notepad 1.1 Freeware'#13#13 +
+    'Based on Delphi component TRAHLEditor.'#13 +
+    'Available (free) at R&A Library home page:'#13 +
+    '   www.chat.ru/~blacknbs'#13#13 +
+    'programing - black(nbs):'#13 +
+    '   blacknbs@chat.ru'#13 +
+    '   www.chat.ru/~blacknbs'#13#13,
+    'About', MB_ICONINFORMATION);
+{>>GpProfile} finally ProfilerExitProc(14); end; {GpProfile>>}end;
+
+procedure TMain.miExitClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(15); try {GpProfile>>}
+  Close;
+{>>GpProfile} finally ProfilerExitProc(15); end; {GpProfile>>}end;
+
+procedure TMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin{>>GpProfile} ProfilerEnterProc(16); try {GpProfile>>}
+  CheckSave;
+  CanClose := True;
+{>>GpProfile} finally ProfilerExitProc(16); end; {GpProfile>>}end;
+
+procedure TMain.CheckSave;
+begin{>>GpProfile} ProfilerEnterProc(17); try {GpProfile>>}
+  if RAHLEditor1.Modified then
+    case MessageDlg('Save changes ?', mtConfirmation,
+       [mbYes, mbNo, mbCancel], 0) of
+      mrYes:
+        miFileSave.Click;
+      mrCancel:
+        Abort;
+    end;
+  RAI2FileClosed;
+{>>GpProfile} finally ProfilerExitProc(17); end; {GpProfile>>}end;
+
+procedure TMain.miFileOpenClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(18); try {GpProfile>>}
+  CheckSave;
+  if OpenDialog1.Execute then
+  begin
+    OpenFile(OpenDialog1.FileName);
+  end;
+{>>GpProfile} finally ProfilerExitProc(18); end; {GpProfile>>}end;
+
+procedure TMain.miFileSaveAsClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(19); try {GpProfile>>}
+  if FFileName <> '' then
+    SaveDialog1.FileName := FFileName
+  else
+    SaveDialog1.FileName := ExtractFilePath(OpenDialog1.FileName) + 'NONAME.TXT';
+  if SaveDialog1.Execute then
+  begin
+    RAHLEditor1.Lines.SaveToFile(SaveDialog1.FileName);
+    FFileName := SaveDialog1.FileName;
+    FileTime := FileAge(FFileName);
+  end
+  else
+    Abort;
+  OpenDialog1.FileName := SaveDialog1.FileName;
+  UpdateCaption;
+{>>GpProfile} finally ProfilerExitProc(19); end; {GpProfile>>}end;
+
+procedure TMain.UpdateCaption;
+begin{>>GpProfile} ProfilerEnterProc(20); try {GpProfile>>}
+  if FFileName <> '' then
+  begin
+    Caption := Capt + ' - ' + FFileName;
+    Application.Title := FFileName + ' - ' + Capt;
+  end
+  else
+  begin
+    Caption := Capt + ' - new file' ;
+    Application.Title := 'new file - ' + Capt;
+  end;
+{>>GpProfile} finally ProfilerExitProc(20); end; {GpProfile>>}end;
+
+procedure TMain.WMDropFiles(var Message: TMessage);
+var
+  FN: string;
+begin{>>GpProfile} ProfilerEnterProc(21); try {GpProfile>>}
+  SetLength(FN, 260);
+  SetLength(FN, DragQueryFile(Message.WParam, 0, PChar(FN), 260));
+  CheckSave;
+  OpenFile(FN);
+{>>GpProfile} finally ProfilerExitProc(21); end; {GpProfile>>}end;
+
+procedure TMain.Search1Click(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(22); try {GpProfile>>}
+  FindDialog1.Execute;
+{>>GpProfile} finally ProfilerExitProc(22); end; {GpProfile>>}end;
+
+procedure TMain.miSearchAgainClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(23); try {GpProfile>>}
+  FindNext;
+{>>GpProfile} finally ProfilerExitProc(23); end; {GpProfile>>}end;
+
+procedure TMain.FindDialog1Find(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(24); try {GpProfile>>}
+  FindNext;
+{>>GpProfile} finally ProfilerExitProc(24); end; {GpProfile>>}end;
+
+procedure TMain.FindNext;
+var
+  S, S1: string;
+  F: PChar;
+begin{>>GpProfile} ProfilerEnterProc(25); try {GpProfile>>}
+  S := RAHLEditor1.Lines.Text;
+  S1 := FindDialog1.FindText;
+  if not (frMatchCase in FindDialog1.Options) then
+  begin
+    S := ANSIUpperCase(S);
+    S1 := ANSIUpperCase(S1);
+  end;
+  F := StrPos(PChar(S) + RAHLEditor1.SelStart, PChar(S1));
+  if F <> nil then
+  begin
+    RAHLEditor1.SelStart := F - PChar(S);
+    RAHLEditor1.SelLength := Length(S1);
+  end;
+{>>GpProfile} finally ProfilerExitProc(25); end; {GpProfile>>}end;
+
+procedure TMain.miSearchReplaceClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(26); try {GpProfile>>}
+//  SAR1.ReplaceDialog;
+{>>GpProfile} finally ProfilerExitProc(26); end; {GpProfile>>}end;
+
+procedure TMain.miOptionsClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(27); try {GpProfile>>}
+  if fParams.Show(raCommon, RAHLEditor1.HighLighter, False) then
+  begin
+    UpdateEditorSettings;
+    RAHLEditor1.Invalidate;
+  end;
+{>>GpProfile} finally ProfilerExitProc(27); end; {GpProfile>>}end;
+
+procedure TMain.miEditorPropertiesClick(Sender: TObject);
+begin{>>GpProfile} ProfilerEnterProc(28); try {GpProfile>>}
+  if fParams.Show(raCommon, RAHLEditor1.HighLighter, True) then
+  begin
+    UpdateEditorSettings;
+    RAHLEditor1.Invalidate;
+  end;
+{>>GpProfile} finally ProfilerExitProc(28); end; {GpProfile>>}end;
+
+
+
+{*********************** RAI2 support ***********************}
+type
+  { small hack }
+  TMyProgram = class(TRAI2Program);
+
+procedure TMain.ErrorLogFmt(const Message: string; const Args: array of const);
+var
+  S: string;
+begin{>>GpProfile} ProfilerEnterProc(29); try {GpProfile>>}
+  S := Format(Message, Args);
+  { save S to log file }
+  //.. not implemented
+  ShowMessage(S);
+{>>GpProfile} finally ProfilerExitProc(29); end; {GpProfile>>}end;    { ErrorLogFmt }
+
+procedure TMain.RAI2Initialize;
+begin{>>GpProfile} ProfilerEnterProc(30); try {GpProfile>>}
+  Args := TArgs.Create;
+ { from RAI2_all.pas }
+  RAI2_System.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Windows.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_SysUtils.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Classes.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Graphics.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Controls.RegisterRAI2Adapter(GlobalRAI2Adapter);
+
+  RAI2_StdCtrls.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_ComCtrls.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Extctrls.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Forms.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Dialogs.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_Menus .RegisterRAI2Adapter(GlobalRAI2Adapter);
+
+  RAI2Fm.RegisterRAI2Adapter(GlobalRAI2Adapter);
+
+  RAI2_RAEditor.RegisterRAI2Adapter(GlobalRAI2Adapter);
+  RAI2_RARegAuto.RegisterRAI2Adapter(GlobalRAI2Adapter);
+
+  RAI2FileName := raCommon.ReadString('Params', 'RAI2File', '');
+  if RAI2FileName = '' then Exit;
+  RAI2FileName := AddPath(RAI2FileName, ExePath);
+  if not FileExists(RAI2FileName) then
+  begin
+    ErrorLogFmt('File %s not found', [RAI2FileName]);
+    Exit;
+  end;
+  try
+    RAI2Program1.Pas.LoadFromFile(RAI2FileName);
+  except
+    ErrorLogFmt('Failed to load file %s', [RAI2FileName]);
+    Exit;
+  end;
+  RAI2Program1.Compile;
+  RAI2SafeCall('main', nil, [Null]);
+{>>GpProfile} finally ProfilerExitProc(30); end; {GpProfile>>}end;    { RegisterRAI2Adapters }
+
+procedure TMain.RAI2UnInitialize;
+begin{>>GpProfile} ProfilerEnterProc(31); try {GpProfile>>}
+  RAI2SafeCall('done', nil, [Null]);
+  Args.Free;
+{>>GpProfile} finally ProfilerExitProc(31); end; {GpProfile>>}end;
+
+function TMain.RAI2Script: boolean;
+begin{>>GpProfile} ProfilerEnterProc(32); try {GpProfile>>}
+  Result := RAI2Program1.Source <> '';
+{>>GpProfile} finally ProfilerExitProc(32); end; {GpProfile>>}end;    {  }
+
+function TMain.RAI2SafeCall(const FunName: string; Args: TArgs;
+  Params: array of Variant): Variant;
+begin{>>GpProfile} ProfilerEnterProc(33); try {GpProfile>>}
+  Result := Null;
+  if RAI2Script and RAI2Program1.FunctionExist(FunName) then
+    try
+      Result := RAI2Program1.CallFunction(FunName, Args, Params);
+    except
+      on E: ERAI2Error do
+        ErrorLogFmt('Call to function %s failed: %s', [FunName, E.Message]);
+    end
+{>>GpProfile} finally ProfilerExitProc(33); end; {GpProfile>>}end;    { RAI2SafeCall }
+
+procedure TMain.RAI2FileOpened;
+begin{>>GpProfile} ProfilerEnterProc(34); try {GpProfile>>}
+  RAI2SafeCall('FileOpened', nil, [FFileName]);
+{>>GpProfile} finally ProfilerExitProc(34); end; {GpProfile>>}end;    { RAI2Open }
+
+procedure TMain.RAI2FileClosed;
+begin{>>GpProfile} ProfilerEnterProc(35); try {GpProfile>>}
+  RAI2SafeCall('FileClosed', nil, [FFileName]);
+{>>GpProfile} finally ProfilerExitProc(35); end; {GpProfile>>}end;    { RAI2FileClosed }
+
+procedure TMain.RAI2Program1GetValue(Sender: TObject; Identifer: String;
+  var Value: Variant; Args: TArgs; var Done: Boolean);
+var
+  S: string;
+begin{>>GpProfile} ProfilerEnterProc(36); try {GpProfile>>}
+  if Cmp(Identifer, 'MainWindow') then
+  begin
+    Value := O2V(Self);
+    Done := True;
+  end
+  else if Cmp(Identifer, 'Editor') then
+  begin
+    Value := O2V(RAHLEditor1);
+    Done := True;
+  end
+  else if Cmp(Identifer, 'ODS') then
+  begin
+    ODS(Args.Values[0]);
+    Value := Null;
+    Done := True;
+  end
+  else if Cmp(Identifer, 'Call') then
+  begin
+    S := Args.Values[0];
+    Args.Delete(0);
+    Value := RAI2Program1.CallFunction(S, Args, [Null]);
+    Done := True;
+  end
+  else if Cmp(Identifer, 'UseUnit') then
+  begin
+    TMyProgram(RAI2Program1).ReadUnit(Args.Values[0]);
+    Value := Null;
+    Done := True;
+  end
+  else if Args.Obj = RAHLEditor1 then
+  begin
+    if Cmp(Identifer, 'FileName') then
+    begin
+      Value := FFileName;
+      Done := True;
+    end
+    else if Cmp(Identifer, 'FileOpen') then
+    begin
+      OpenFile(Args.Values[0]);
+      Value := Null;
+      Done := True;
+    end
+    else if Cmp(Identifer, 'FileSave') then
+    begin
+      miFileSave.Click;
+      Value := Null;
+      Done := True;
+    end
+    else if Cmp(Identifer, 'CheckSave') then
+    begin
+      CheckSave;
+      Value := Null;
+      Done := True;
+    end
+    else if Cmp(Identifer, 'HighlighterName') then
+    begin
+      Value := Highlighters[RAHLEditor1.Highlighter];
+      Done := True;
+    end
+    else if Cmp(Identifer, 'LoadColors') then
+    begin
+      LoadColors;
+      Done := True;
+    end
+  end;
+{>>GpProfile} finally ProfilerExitProc(36); end; {GpProfile>>}end;
+
+procedure TMain.RAI2Program1GetUnitSource(UnitName: String;
+  var Source: String; var Done: Boolean);
+begin{>>GpProfile} ProfilerEnterProc(37); try {GpProfile>>}
+  try
+    Source := LoadTextFile(AddPath(UnitName + PadExt, ExtractFilePath(RAI2FileName)));
+    Done := True;
+  except
+  end;
+{>>GpProfile} finally ProfilerExitProc(37); end; {GpProfile>>}end;
+
+procedure TMain.RAHLEditor1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin{>>GpProfile} ProfilerEnterProc(38); try {GpProfile>>}
+  Args.Clear;
+  Args.Values[0] := Key;
+  Args.Values[1] := S2V(Byte(Shift));
+  Args.Types[0] := varInteger or varByRef;
+  Args.Count := 2;
+  RAI2SafeCall('KeyDown', Args, [Null]);
+  Key := Args.Values[0];
+{>>GpProfile} finally ProfilerExitProc(38); end; {GpProfile>>}end;
+
+procedure TMain.RAHLEditor1KeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin{>>GpProfile} ProfilerEnterProc(39); try {GpProfile>>}
+  Args.Clear;
+  Args.Values[0] := Key;
+  Args.Values[1] := S2V(Byte(Shift));
+  Args.Types[0] := varInteger or varByRef;
+  Args.Count := 2;
+  RAI2SafeCall('KeyUp', Args, [Null]);
+  Key := Args.Values[0];
+{>>GpProfile} finally ProfilerExitProc(39); end; {GpProfile>>}end;
+
+procedure TMain.RAHLEditor1KeyPress(Sender: TObject; var Key: Char);
+begin{>>GpProfile} ProfilerEnterProc(40); try {GpProfile>>}
+  Args.Clear;
+  Args.Values[0] := Key;
+  Args.Types[0] := varInteger or varByRef;
+  Args.Count := 1;
+  RAI2SafeCall('KeyPress', Args, [Null]);
+  if string(Args.Values[0]) <> '' then
+    Key := string(Args.Values[0])[1] else
+    Key := #0;
+{>>GpProfile} finally ProfilerExitProc(40); end; {GpProfile>>}end;
+
+
+end.

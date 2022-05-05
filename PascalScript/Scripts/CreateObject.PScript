@@ -1,0 +1,40 @@
+Program Teste;
+ 
+Var
+   i, ii  : Integer;
+   S      : String;
+   OutPut : Object;
+   SL     : Object;
+ begin
+  OutPut := CreateObject(TOutPut);
+  SL     := CreateObject(TStringList);
+
+  OutPut.WriteLN('Objeto OutPut');
+  OutPut.WriteLN('');
+
+  i := 1;
+  while i <= 20 do
+    begin
+    s := '';
+    ii := 1;
+    while ii <= i do
+      begin
+      s := s + '-';
+      ii := ii + 1;
+      end;
+    OutPut.WriteLN(s);
+    i := i + 1;
+    end;
+
+  OutPut.WriteLN('');
+
+  if FileExists('c:\winNT\win.ini') then
+     SL.LoadFromFile('c:\winNT\win.ini');
+
+  OutPut.WriteStrings(SL);
+  OutPut.Show; 
+
+  FreeObject(SL);
+  FreeObject(OutPut);
+end.
+

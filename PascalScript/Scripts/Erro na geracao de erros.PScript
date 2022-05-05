@@ -1,0 +1,8 @@
+program RozenFinalIndices;
+var
+   y: Object;
+begin
+  y := x;
+  y := x;
+  for i := 1 to 10 do;
+End.

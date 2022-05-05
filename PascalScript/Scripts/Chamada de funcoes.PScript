@@ -1,0 +1,16 @@
+Program Teste;
+ 
+Var
+   X, A: REAL;
+   I   : Integer;
+ 
+begin
+   i := 0;
+   while i < 300 do
+     begin
+     x := SQR(SQR(1.2));
+     A := Power(2, x);
+     i := i + 1;
+     end;
+end.
+

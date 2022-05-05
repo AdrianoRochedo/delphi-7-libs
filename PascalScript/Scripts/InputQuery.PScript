@@ -1,0 +1,8 @@
+Program InputQuery_Teste;
+var s: string;
+begin
+  s := 'Mude este texto, por FAVOR !!!';
+  if InputQuery('1', '2', s) then
+     ShowMessage('Você mudou o texto para: ' + s);
+end.
+ 

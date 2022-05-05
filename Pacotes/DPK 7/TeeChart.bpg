@@ -1,0 +1,39 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = DclTeP44.bpl Tee44.bpl TeeDB44.bpl TeeGL44.bpl TeePro44.bpl \
+  DclTee44.bpl TeeUI44.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+DclTeP44.bpl: DclTeP44.dpk
+  $(DCC)
+
+Tee44.bpl: Tee44.dpk
+  $(DCC)
+
+TeeDB44.bpl: TeeDB44.dpk
+  $(DCC)
+
+TeeGL44.bpl: TeeGL44.dpk
+  $(DCC)
+
+TeePro44.bpl: TeePro44.dpk
+  $(DCC)
+
+DclTee44.bpl: DclTee44.dpk
+  $(DCC)
+
+TeeUI44.bpl: TeeUI44.dpk
+  $(DCC)
+
+

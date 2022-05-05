@@ -1,0 +1,37 @@
+Program Teste_Panilha;
+
+  procedure GerarVetor(V: Object; Mult1, Mult2: real);
+  var i: integer;
+      x: real;
+  begin
+    V := TwsDFVec(V);
+    x := Mult1 * Mult2;
+    for i := 1 to V.getLen do
+      V.set(i, i * x);
+  end;
+
+Var
+   i, ii  : Integer;
+   S      : String;
+   P      : Object;
+   V      : Object;
+begin
+  P := CreateObject(TPlanilha);
+  V := CreateObject(TwsDFVec, 100);
+
+  GerarVetor(V, 0.001, 0.66353);
+  P.WriteVecInCol(V, 1, 1);
+
+  GerarVetor(V, 0.363635, 0.0000045);
+  P.WriteVecInCol(V, 2, 1);
+
+  GerarVetor(V, 0.0002234, 00000023);
+  P.WriteVecInCol(V, 3, 1);
+
+  P.SaveToFile('F:\TestePrecisao.xls', 'XLS');
+  P.Show;
+
+  FreeObject(V);
+  KeepRun;
+end.
+

@@ -1,0 +1,20 @@
+Program Teste;
+ 
+Var
+  X, A: Integer;
+  B: Boolean;
+  R: Real;  
+ 
+begin
+  B := False;
+  A := 1;
+  x := 1;
+  if (a=2) and (x=1) then
+     x := 10
+  else
+     x := 20;
+
+  B := (a=1) and (x=20); 
+  if B then x := 30;
+end.
+

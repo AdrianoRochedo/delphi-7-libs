@@ -1,0 +1,122 @@
+      Compatibility Between Win/Sys and SysTools and
+            using SysTools with Orpheus
+
+While both Win/Sys and SysTools are intended to provide low
+level data and string manipulation support for Windows
+programmers, there are many significant changes between the
+two libraries. When writing SysTools, every effort was made 
+to at least keep routine names similiar and, where possible, 
+the interface to the routines the same. However, the overriding 
+issue was to make SysTools work with Delphi in the best possible 
+ways. With this in mind, those migrating programs from Win/Sys 
+to Delphi and SysTools may find they have to do a fair amount 
+of rewriting of the original code, especially if the program
+made use of the container classes, string manipulation routines,
+and the sort engine.
+
+Obviously, this is not the best news for Win/Sys users but there
+are several reasons for the general incompatibilities. First, 
+and foremost, is that SysTools is compatible with both 16-bit 
+and 32-bit programs. Win/Sys was strictly a 16-bit product.
+Since many of the routines use assembly code, Win/Sys will not
+compile at all when using Delphi 2.x.
+
+SysTools was written almost from scratch in Delphi and is intended
+strictly for use in Delphi 1.x or 2.x. To provide full backwards
+compatibility for Win/Sys or, for that matter, Windows compilers in
+general, raised too many issues and did not allow SysTools to take
+full advantage of Delphi's features.
+
+Despite these obstacles, programmers will appreciate the improved
+performance of Systool's routines, more powerful versions of the
+Win/Sys container classes, a class to manipulate INI files and the
+Windows Registry, BCD math, and more.
+
+
+Specific Compatibility Issues
+
+  Date/Time Routines
+  ------------------
+  The date and time routines in SysTools are very similiar to those
+  in Win/Sys. Some additional routines have been added to provide
+  support for a greater range of dates, specifically to work with
+  "astronomical" Julian Dates which start counting from January 1,
+  4173 B.C.
+
+  String Manipulation
+  -------------------
+  The most significant difference between SysTools and Win/Sys is that
+  SysTools handles three types of strings - Length-byte, huge string
+  (introduced in Delphi 2.0), and null-terminated - whereas Win/Sys
+  works with only null-terminated strings.
+
+  Each string function or procedure in SysTools has three versions,
+  each dealing with the appropriate type of string. For example, the
+  Pad function is PadS for length-byte strings, PadL for huge strings,
+  and PadZ for null-terminated strings. Most of the routines working
+  with null-terminated strings will be compatible with equivalent routine
+  in Win/Sys, providing the name of the function or procedure is changed
+  to include the 'Z' at the end its name.
+
+  Container Classes
+  -----------------
+  The container classes in SysTools have been completely rewritten to
+  take advantage of Delphi's features. There is very little, if any,
+  compatibility between the container classes in SysTools and
+  those in Win/Sys. For example, SysTools has no equivalent to the
+  Win/Sys TPCharArray used in the WsPCHDCT class. Any program that 
+  makes use of the Win/Sys container classes will require a significant 
+  rewrite. The bright spot is that the new container classes are easier 
+  to use, far more powerful, and include a couple of additions such as 
+  a general hash table class (instead of for strings only) and a sorted 
+  collection.
+
+  Operating System Routines
+  -------------------------
+  SysTools has been designed to work with both 16-bit and 32-bit
+  operating systems. When working with 16-bit programs, most of
+  the routines in SysTools will be similar to those in Win/Sys.
+  It is a much different situation when dealing with 32-bit
+  programs since Windows 95 and Windows NT, among other changes
+  in file naming conventions, allow long file and path names.
+  SysTools is able to deal with most of the possibilities; Win/Sys
+  cannot even be compiled in 32-bit applications let alone work
+  with these changes.
+
+  Furthermore, some routines were added to provide better access
+  to operating system and computer information while others were 
+  dropped because they didn't apply to all the operating systems
+  on which SysTools can be used.
+
+  In Win/Sys but not available in SysTools were WSTimer (timing and
+  delay procedures), WsDPMI (DPMI access), and WsHeap (Heap analysis). 
+  The first two are no longer practical in the Delphi/Windows 
+  programming paradigm. TurboPower's application Memory Sleuth has 
+  replaced WsHeap with a powerful set of analysis and reporting 
+  routines that enable a programmer to quickly find "memory leaks"
+  and resource allocation errors in 32-bit programs.
+
+
+  INI Files and Windows Registry
+  ------------------------------
+  SysTools provides a class that can read and write directly to
+  any INI file or the Windows Registry (16-bit and 32-bit). Win/Sys
+  provided no such class or feature.
+
+
+Using SysTools with TurboPower's Orpheus
+----------------------------------------
+
+Orpheus is a library of Delphi components, including data entry
+components with validation routines, tables, data-aware components,
+and more. SysTools can be used in addition to Orpheus to make a program
+even more powerful and flexible.
+
+The two libraries share a common unit, STDATE, for basic date and time
+manipulation. The two handle international issues and date/time
+string manipulation in their own, separate units. Beyond that, the
+SysTools routines and container classes can be used in conjunction with
+the Orpheus components to display and manipulate data. One example is
+to store the data used by the Orpheus table in one of Systool's container
+classes. When required, the data in the container class can be streamed
+to and from a file with only a few lines of code.

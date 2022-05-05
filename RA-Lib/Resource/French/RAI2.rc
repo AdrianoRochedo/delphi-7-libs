@@ -1,0 +1,58 @@
+#define BaseRes $5000
+STRINGTABLE
+LANGUAGE LANG_FRENCH, 1
+{
+ BaseRes +   0, "Ok"
+ BaseRes +   1, "Erreur inconnu"
+ BaseRes +   2, "Erreur interne de l'interpréteur: %s"
+ BaseRes +   3, "Interruption de l'utilisateur"
+ BaseRes +   4, "Re-provocation d'une exception autorisé seulement dans un gestionnaire d'exception"
+ BaseRes +   5, "Erreur dans l'unité '%s' à la ligne %d\n%s"
+ BaseRes +  31, "Enregistrement '%s' non défini"
+
+ BaseRes +  52, "Débordement de pile"
+ BaseRes +  53, "Types incompatibles"
+ BaseRes +  55, "Fonction 'main' non définie"
+ BaseRes +  56, "Unité '%s' non trouvé"
+ BaseRes +  57, "Evénement '%s' non enregistré"
+ BaseRes +  58, "Dfm '%s' not found"
+
+ BaseRes + 101, "Erreur dans le remarquage"
+ BaseRes + 103, "%s attendu mais %s trouvé"
+ BaseRes + 104, "Identificateur non déclaré : '%s'"
+ BaseRes + 105, "Le type de l'expresion doit être BOOLEAN"
+ BaseRes + 106, "Type de la classe requit"
+ BaseRes + 107, "';' non autorisé devant else"
+ BaseRes + 108, "Le type de l'expresion doit être INTEGER"
+ BaseRes + 109, "Type d'enregistrement, d'objet ou de classe requit"
+ BaseRes + 110, "Opérateur ou ';' manquant"
+ BaseRes + 111, "Identificateur redéclaré: '%s'"
+
+ BaseRes + 171, "English: Array index out of bounds"
+ BaseRes + 172, "English: Too many array bounds"
+ BaseRes + 173, "English: Not enough array bounds"
+ BaseRes + 174, "English: Invalid array dimension"
+ BaseRes + 175, "English: Invalid array range"
+ BaseRes + 176, "English: Array type required"
+
+ BaseRes + 181, "Trop de paramètres"
+ BaseRes + 182, "Pas assez de paramètres"
+ BaseRes + 183, "Types incompatible : '%s' and '%s'"
+ BaseRes + 184, "Erreur de chargement de la librairie '%s'"
+ BaseRes + 185, "Type d'argument invalide dans l'appel de la fonction '%s'"
+ BaseRes + 186, "Type de résultat invalide dans l'appel de la fonction '%s'"
+ BaseRes + 187, "Impossible d'obtenir une adresse proc pour la fonction '%s'"
+ BaseRes + 188, "Type d'argument invalide dans l'appel de la fonction '%s'"
+ BaseRes + 189, "Type de résultat invalide dans l'appel de la fonction '%s'"
+ BaseRes + 190, "Convention d'appel invalide pour la fonction '%s'"
+
+ BaseRes + 201, "L'appel de '%s' à échouer: '%s'"
+
+ BaseRes + 301, "Expression"
+ BaseRes + 302, "Identificateur"
+ BaseRes + 303, "Déclaration"
+ BaseRes + 304, "Fin de fichier"
+ BaseRes + 305, "class declaration"
+
+ BaseRes + 401, "Implémentation de l'unité non trouvé"
+}

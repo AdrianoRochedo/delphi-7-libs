@@ -1,0 +1,38 @@
+Program Teste;
+ 
+Var
+   i, ii    : Integer;
+   S        : String;
+   OutPut   : Object;
+   SFV, SIV : Object;
+   N        : Integer;
+ begin
+  N := 10;
+
+  OutPut := CreateObject(TOutPut);
+  SFV    := CreateObject(TwsSFVec, N);
+  SIV    := CreateObject(TwsSIVec, N);
+
+  {Exemplo de como acessar os elementos de um vetor}
+  for i := 1 to N do
+    begin 
+    SFV.Set(i, 100/i);
+    SIV.Set(i, SFV.Get(i));
+    end;
+
+  OutPut.WriteLN('Exemplo de impressão de vetor');
+  OutPut.WriteLN('');
+
+  OutPut.WriteLN('Vetor de Reais');
+  SFV.Print(OutPut);
+  
+  OutPut.WriteLN('Vetor de Inteiros');
+  SIV.Print(OutPut);
+
+  OutPut.Show; 
+
+  FreeObject(SFV);
+  FreeObject(SIV);
+  FreeObject(OutPut);
+end.
+

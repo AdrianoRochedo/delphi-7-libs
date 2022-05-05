@@ -1,0 +1,17 @@
+Program Teste;
+ 
+Var
+   i, ii  : Integer;
+   S      : String;
+   OutPut : Object;
+   SL     : Object;
+ begin
+  OutPut := CreateObject(TOutPut);
+  SL     := CreateObject(TStringList);
+
+  FreeObject(SL);
+  if ObjectIsValid(SL) then ShowMessage('erro');
+
+  FreeObject(OutPut);
+end.
+

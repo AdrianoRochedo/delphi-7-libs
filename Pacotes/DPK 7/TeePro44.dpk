@@ -1,0 +1,74 @@
+package TeePro44;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{ DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{ LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TeeChart Pro 4.0 components'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE D5}
+{$DEFINE D3}
+
+requires
+  vcl,
+  tee44,
+  teeui44;
+
+contains
+  OHLChart,
+  CandleCh,
+  TeeSurfa,
+  ErrorBar,
+  CurvFitt,
+  TeePolar,
+  Bar3D,
+  TeeCount,
+  ImaPoint,
+  ImageBar,
+  MyPoint,
+  BigCandl,
+  StatChar,
+  TeePoly,
+  TeeProCo,
+  CandlEdi,
+  ErrBarEd,
+  SurfEdit,
+  ContEdit,
+  PolarEdi,
+  Po3DEdit,
+  TeeGriEd,
+  TeeVolEd,
+  TeeImaEd,
+  EditPro,
+  teeCumu,
+  TeeMonth,
+  TeeData,
+  TeeBezie,
+  TeeEdit,
+  TeePoin3,
+  TeeComma,
+  TeeURL,
+  TeeScroB,
+  TeeRose;
+
+end.
+

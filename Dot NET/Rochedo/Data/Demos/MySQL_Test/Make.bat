@@ -1,0 +1,1 @@
+csc /target:exe /out:Teste.exe /main:MainClass /r:"..\..\Rochedo.Data.dll" /r:"..\..\..\..\MySQLDriverCS\source\MySQLDriverCS\MySQLDriverCS.dll" Main.cs 

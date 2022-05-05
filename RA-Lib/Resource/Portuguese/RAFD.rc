@@ -1,0 +1,87 @@
+#define ResBase $5400
+#define StrBase $5600
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, 1
+{
+ ResBase +   1, "File '%s' not found"
+ ResBase +   2, "No forms selected"
+ ResBase +   3, "Can't save file '%s'"
+ ResBase +   4, "Save changes to %s ?"
+
+ ResBase +   7, "Can't load package %s. It required to run form"
+ ResBase +   8, "Function not found in package %s. May be wrong package version"
+ ResBase +   9, "Error loading expert %s: \n%s"
+ ResBase +   10, "Error creating form\n%s"
+ ResBase +   11, "Can't change ini strings while AppBuilder is running"
+ ResBase +   12, "Renaming form failed"
+ ResBase +   13, "Renaming unit failed"
+ ResBase +   14, "Renaming method %s failed"
+ ResBase +   15, "Form declaration not found"
+ ResBase +   16, "Error in file %s: %s clause missing or incorrect"
+
+ StrBase +   1, "OK"
+ StrBase +   2, "Cancel"
+
+ StrBase +   50, "Bring To Front"
+ StrBase +   51, "Send To Back"
+
+ StrBase +   100, "&File"
+ StrBase +   101, "&Edit"
+ StrBase +   102, "&View"
+ StrBase +   103, "&New"
+ StrBase +   104, "New &Form"
+ StrBase +   105, "&Open"
+ StrBase +   106, "&Save"
+ StrBase +   107, "Save &As"
+ StrBase +   108, "Save &All"
+ StrBase +   109, "&Close"
+ StrBase +   110, "C&lose All"
+ StrBase +   111, "&Exit"
+ StrBase +   112, "&Delete"
+ StrBase +   113, "&Object Inspector"
+ StrBase +   114, "&Alignment Palette"
+ StrBase +   115, "Compone&nt Palette"
+ StrBase +   116, "&Run"
+ StrBase +   117, "Run &Form"
+ StrBase +   118, "Run &Report Preview"
+ StrBase +   119, "To&ggle Form/Unit"
+ StrBase +   120, "Open file"
+ StrBase +   121, "Save All"
+ StrBase +   122, "Toggle form/unit"
+ StrBase +   123, "Run Form"
+ StrBase +   124, "Run Report Preview"
+ StrBase +   125, "&Component"
+ StrBase +   126, "W&indow List..."
+ StrBase +   127, "&Search"
+ StrBase +   128, "&Project"
+ StrBase +   129, "&Tools"
+ StrBase +   130, "Pro&ject Source"
+ StrBase +   131, "Environment &Options..."
+ StrBase +   132, "&Help"
+ StrBase +   133, "&Copy"
+ StrBase +   134, "&Paste"
+
+ StrBase +   200, "Align"
+ StrBase +   201, "Align left edges"
+ StrBase +   202, "Align right edges"
+ StrBase +   203, "Align tops"
+ StrBase +   204, "Align bottoms"
+ StrBase +   205, "Align horizontal centers"
+ StrBase +   206, "Center horizontally in window"
+ StrBase +   207, "Space equally, horizontally"
+ StrBase +   208, "Align vertical centers"
+ StrBase +   209, "Center vertically in window"
+ StrBase +   210, "Space equally, vertically"
+
+ StrBase +   220, "Object Inspector"
+ StrBase +   221, "Properties"
+ StrBase +   222, "Events"
+
+ StrBase +   230, "String list editor"
+ StrBase +   231, "Code editor..."
+
+ StrBase +   240, "New items"
+ StrBase +   241, "New"
+
+}
+

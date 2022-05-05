@@ -1,0 +1,67 @@
+R E A D M E
+===========
+
+ZeosDBO is a database middleware component for Borland development tools,
+including Delphi, C++ Builder and Kylix.
+
+The following compilers are supported: Delphi4+, CBuilder4+ and Kylix1+
+
+Zeoslib supports direct connectivity to the following databases using the
+vendor provided, native interface:
+
+MySQL, PostgreSQL, Microsoft SQL Server, Sybase, InterBase, Firebird. 
+
+Advantages of using ZeosDBO:
+- Platform independance.  The ZeosLIB is highly generic.  Applications
+  written in Zeos can be migrated across databases without compilation.
+- Zeos is open source, written for usability and extensibility.
+- Zeos leverages the amazing power of the Delphi development environemt
+  without relying on a performance killing middleware.
+- Zeos is an extremely thin abstraction layer, unlike 'thick' layered 
+  protocols like OLE and ODBC.
+
+Package contents:
+
+1.  CORE - Core classes and interfaces. Contains Java style objects and
+collections as well as compatibility types and functions.
+
+2. PARSE - API for lexical and syntax analysis. Ported from Java API by
+Steven Mestker from his book "Building Parsers with Java".
+
+3. PARSESQL - SQL specific parsers and tokenizers.
+
+4. PLAIN - Native plain API to supported SQL servers.
+
+5. DBC - Port of Java Database Connectivity API (JDBC 2.0). DBC API acts
+as intermediate layer plain API and highlevel TDataset or DBExpress API.
+
+6. COMPONENT - Visual components descanded from TDataset.
+
+
+Installed components:
+
+1. ZConnection: This component encapsulates the database connection
+Important properties:
+- Protocol: You must set it to match the desired DBMS.
+- AutoCommit: Everything is committed automatically if true otherwise
+  commit must be issued explicitly.
+
+2. ZReadOnlyQuery: The base query component to return data from the server.
+
+3. ZQuery: This query additionally can write modifications back to the database.
+
+4. ZUpdateSQL: Using an internal SQL parser, ZeosLib will attempt to construct
+SQL insert statements to match your defined query.  For complex statements or
+cases where custom behavior is required, ZUpdateSQL can be paired with the
+ZQuery object utilize special insert statements.
+
+5. ZSQLProcessor: This component can execute any SQL script.
+
+
+The project home page can be found here:
+
+  http://www.zeoslib.net
+
+
+Thank you for using our software,
+The Zeos Development Group

@@ -1,0 +1,9 @@
+Program Teste_Exit;
+var i: Integer;
+begin
+  for i := 1 to 10 do
+    if i = 5 then Exit;
+
+  ShowMessage('Esta mensagem não deverá ser mostrada');
+end.
+ 

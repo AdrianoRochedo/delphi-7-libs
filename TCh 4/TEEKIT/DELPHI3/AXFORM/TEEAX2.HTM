@@ -1,0 +1,93 @@
+<HTML>
+<head>
+   <title>TeeChart-Pro 3.0 ActiveX Form Installation</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000" Topmargin=0>
+<TABLE CELLPADDING="1" WIDTH="100%"  BORDER="0">
+<TR><TD WIDTH="250" ALIGN="left"><LEFT><FONT SIZE=4 FACE="Arial"><strong>TeeChart Pro ActiveX Form</strong></font></LEFT>
+</TD><TD WIDTH="150"></TD></TR>
+</TABLE>
+<pre>---------------------------------------------------------------
+  Requeriments:
+=======================
+
+  ** Microsoft Windows 95 or Windows NT.
+  ** Microsoft Internet Explorer 3.0 or greater
+  ** The following Borland Delphi 3.0 packages in <A href="file://c|\windows\system">c:\windows\system</A>
+
+       VCL30.DPL
+       VCLSMP30.DPL
+       TEE30.DPL
+       TEEUI30.DPL
+
+  
+  (These packages will be offered soon for first-time automatic 
+   downloading to machines without Delphi 3.0 installed.)
+
+
+  You must be using Internet Explorer with "Medium" or "None"
+  security filter.
+
+  Go to Internet Explorer --> View --> Options --> Security
+  and click on "Safety Level" to change it.
+      
+
+
+ Troubleshooting:
+=======================
+
+
+ ** I see a small white squared icon at the upper left corner
+    with a red "X" symbol.
+
+    That means Internet Explorer cannot locate the TeeChart
+    ActiveX Form file or the necessary Delphi 3.0 packages
+    in your \windows\system directory.
+
+    (See above installation instructions and requeriments).
+
+    Check you have the above DPL files in your <A href="file://c|\windows\system">c:\windows\system</A>
+    directory ( or in <A href="file://c|\winnt\system32">c:\winnt\system32</A> if using Windows NT ).
+
+    Go to <A href="file://c|\windows\occache">c:\windows\occache</A> directory 
+    and check you have the following files:
+
+      teeax.inf
+      teeax.ocx
+
+    If you dont have these files, it means Internet Explorer
+    cannot download them from our web site.
+    This is can be a problem on our side or in your internet
+    connection.  Re-try at a later time by refreshing the demo 
+    page in Internet Explorer.
+
+    
+    How it works ?
+
+    The teeax.HTM file contains a reference to the teeax.INF 
+    file.
+    This INF file contains instructions for Internet Explorer
+    on where to find the TeeChart ActiveX form OCX file  
+    in a compressed format :  teeax.cab.
+
+    Internet Explorer starts downloading teeax.cab to your 
+    machine. When finished, it extracts the teeax.ocx file
+    and adds it to the Windows registry.
+
+    The INF and OCX files are copied into <A href="file://c|\windows\occache">c:\windows\occache</A> 
+    directory for later reuse.
+
+    Then it runs the ActiveX Form, and the form checks for
+    the Delphi 3.0 runtime packages (VCL30, VCLSMP30, TEE30 and
+    TEEUI30.dpl files).
+
+    These packages come with the default installation of Delphi 3.0, 
+    and go to the <A href="file://c|\windows\system">c:\windows\system</A> directory.
+
+   
+    Please <A href="mailto:teechart@redestb.es">email us</A> for any problems running 
+    the ActiveX Form example. Thank You!
+   
+</pre></B>
+</body>
+</HTML>

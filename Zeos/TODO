@@ -1,0 +1,29 @@
+T O D O   L I S T
+=================
+
+High priority tasks (to implement in the next version):
+  1. TDataset sorting
+  2. TDataset master-detail links
+  3. Stored procedure support
+  4. Multibyte/unicode character string support
+  5. Default values
+  6. Autoincremented fields
+  7. Character set translation if it is different between server and client
+  8. Query parameters with special chars in TZQuery and TZUpdateSQL
+
+Medium Priority Tasks (to implement in the next version):
+  1. String resources for internationalization
+  2. Logging and TZSQLMonitor component
+  3. Oracle 8/9 driver
+  4. DB/2 driver
+  5. Generators
+  6. Midas Provider interfaces
+  7. dbExpress support
+
+Low Priority (to implement in one of the future versions):
+  1. SapDB driver
+  2. ADO driver
+  3. Connection to MySQL without specified database
+  4. Embedded MySQL driver
+  5. MySQL 4.1 driver
+

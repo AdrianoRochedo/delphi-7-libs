@@ -1,0 +1,1 @@
+$(DELPHI)\Lib;$(DELPHI)\Bin;$(DELPHI)\Imports;$(DELPHI)\Projects\Bpl;$(DELPHI)\Rave5\Lib;$(DELPHI)\Source\ToolsAPI;$(Lib)\Lib;$(Lib)\Frames;$(Lib)\Graficos;$(Lib)\Hidro;$(Lib)\XML;$(Lib)\WinStat_Lib;$(Lib)\TCH 4;$(Lib)\JLC;$(Lib)\RA-Lib\Lib;$(Lib)\SysTools;$(Lib)\Zip;$(Lib)\pacotes\d7;$(Lib)\DE\XP Theme Manager\Lib;$(Lib)\DE\CX \Lib;$(Lib)\DE\SpreadSheet\Lib;$(Lib)\SpreadSheet

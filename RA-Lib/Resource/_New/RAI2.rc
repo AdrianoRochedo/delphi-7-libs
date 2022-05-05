@@ -1,0 +1,60 @@
+#define BaseRes $5000
+STRINGTABLE
+LANGUAGE LANG_ENGLISH, 1
+{
+ BaseRes +   0, "Ok"
+ BaseRes +   1, "Unknown error"
+ BaseRes +   2, "Internal interpreter error: %s"
+ BaseRes +   3, "User break"
+ BaseRes +   4, "Re-raising an exception only allowed in exception handler"
+ BaseRes +   5, "Error in unit '%s' on line %d : %s"
+ BaseRes +   6, "External in unit '%s' on line %d : %s"
+ BaseRes +   7, "Access denied to '%s'"
+ BaseRes +  31, "Record '%s' not defined"
+
+ BaseRes +  52, "Stack overflow"
+ BaseRes +  53, "Type mistmatch"
+ BaseRes +  55, "Function 'main' undefined"
+ BaseRes +  56, "Unit '%s' not found"
+ BaseRes +  57, "Event '%s' not registered"
+ BaseRes +  58, "Dfm '%s' not found"
+
+ BaseRes + 101, "Error in remark"
+ BaseRes + 103, "%s expected but %s found"
+ BaseRes + 104, "Undeclared identifer '%s'"
+ BaseRes + 105, "Type of expression must be boolean"
+ BaseRes + 106, "Class type required"
+ BaseRes + 107, "';' not allowed before else"
+ BaseRes + 108, "Type of expression must be integer"
+ BaseRes + 109, "Record, object or class type required"
+ BaseRes + 110, "Missing operator or semicolon"
+ BaseRes + 111, "Identifer redeclared: '%s'"
+
+ BaseRes + 171, "Array index out of bounds"
+ BaseRes + 172, "Too many array bounds"
+ BaseRes + 173, "Not enough array bounds"
+ BaseRes + 174, "Invalid array dimension"
+ BaseRes + 175, "Invalid array range"
+ BaseRes + 176, "Array type required"
+
+ BaseRes + 181, "Too many actual parameters"
+ BaseRes + 182, "Not enough parameters"
+ BaseRes + 183, "Incompatible types: '%s' and '%s'"
+ BaseRes + 184, "Error loading library '%s'"
+ BaseRes + 185, "Invalid type of argument in call to function '%s'"
+ BaseRes + 186, "Invalid type of result in call to function '%s'"
+ BaseRes + 187, "Can't get proc address for function '%s'"
+ BaseRes + 188, "Invalid type of argument in call to function '%s'"
+ BaseRes + 189, "Invalid type of result in call to function '%s'"
+ BaseRes + 190, "Invalid call convention for function '%s'"
+
+ BaseRes + 201, "Calling '%s' failed: '%s'"
+
+ BaseRes + 301, "Expression"
+ BaseRes + 302, "Identifer"
+ BaseRes + 303, "Declaration"
+ BaseRes + 304, "end of file"
+ BaseRes + 305, "class declaration"
+
+ BaseRes + 401, "Implementation of unit not found"
+}

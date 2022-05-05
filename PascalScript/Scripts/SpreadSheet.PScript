@@ -1,0 +1,44 @@
+Program SpreadSheet;
+
+var
+  p: object;
+
+begin
+  p := CreateObject(TSpreadSheetBook);
+
+  p.LoadFromFile('F:\Projetos\Lib\PascalScript\Scripts\teste.xls');
+
+  // Escreve na 1. folha (corrente por padrão)
+  p.ActiveSheet.writeText(1, 1, '[1, 1]');
+  p.ActiveSheet.writeText(2, 2, '[2, 2]');
+  p.ActiveSheet.writeFloat(3, 3, 3.33333, 2);
+  //p.ActiveSheet.BoldCell(3, 3);
+  p.ActiveSheet.setColWidth(3, 120);
+
+  // Cria e escreve na 2. folha
+  p.NewSheet('Folha 2');
+  p.ActiveSheet.writeText(4, 4, '[4, 4]');
+  p.ActiveSheet.writeText(5, 5, '[5, 5]');
+  p.ActiveSheet.writeFloat(6, 6, 3.333334, 8);
+  p.ActiveSheet.setColWidth(6, 120);
+  ShowMessage(p.ActiveSheet.GetText(6, 6));
+
+  // Volta para a 1. folha
+  p.setActiveSheetIndex(0);
+  p.ActiveSheet.writeText(4, 4, '[4, 4]');
+  p.ActiveSheet.writeText(5, 5, '[5, 5]');
+  p.ActiveSheet.writeFloat(6, 6, 3.333334, 6);
+  p.ActiveSheet.setColWidth(6, 120);
+  ShowMessage(p.ActiveSheet.GetText(5, 1));
+
+  // Título da janela
+  p.setCaption('Planilha');
+
+  // Mostra a janela e espera o seu fechamento
+  p.ShowModal;
+
+  // Salvamento ...
+  if InputBox('Confirmação', 'Você deseja salvá-la ?', 'Não') = 'Sim' then
+     if ForceDirectories('c:\Temp') then
+        p.SaveToFile('c:\Temp\testePascalScript.xls');
+end.

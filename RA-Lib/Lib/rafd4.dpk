@@ -1,0 +1,48 @@
+package rafd4;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE ON}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'R&A Form Designer'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl40,
+  ractl4;
+
+contains
+  fRAFDAppBuilder in 'RAFDAppBuilder.pas',
+  fRAFDAlignPalette in 'RAFDAlignPalette.pas',
+  fRAFDEditor in 'RAFDEditor.pas',
+  fRAFDNewItem in 'RAFDNewItem.pas',
+  fRAFDPalette in 'RAFDPalette.pas',
+  fRAFDProjectManager in 'RAFDProjectManager.pas',
+  fRAFDPropertyInspector in 'RAFDPropertyInspector.pas',
+  fRAFDStringsEditor in 'RAFDStringsEditor.pas',
+  RAFD in 'RAFD.pas',
+  RAFDDesigner in 'RAFDDesigner.pas',
+  RAFDIDE in 'RAFDIDE.pas',
+  RARTTI in 'RARTTI.pas',
+  RAFDCompat in 'RAFDCompat.pas';
+
+end.

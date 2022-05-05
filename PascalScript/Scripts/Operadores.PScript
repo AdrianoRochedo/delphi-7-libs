@@ -1,0 +1,16 @@
+Program Operadores;
+var r1, r2: real;
+    i1, i2: Integer;
+begin
+  r1 := 10 / 3.12;
+  r2 := 2.3 * 3.2;
+  i1 := 10 div 3;
+  i2 := 10 mod 3;
+
+  ShowMessage('Teste dos Operadores: ' + #13 + #13 +
+              '10 / 3.12 = ' + ValToStr(r1) + #13 +
+              '2.3 * 3.2 = ' + ValToStr(r2) + #13 +
+              '10 div 3 = ' + ValToStr(i1) + #13 +
+              '10 mod 3 = ' + ValToStr(i2));
+end.
+ 

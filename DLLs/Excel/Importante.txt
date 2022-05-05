@@ -1,0 +1,3 @@
+Tanto a DLL (Excel) quanto os programas que a utilizarem deverao
+utilizar as mesmas diretivas de compilacao.
+Ex: WinStat

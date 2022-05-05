@@ -1,0 +1,1072 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MySQLDriverCS</name>
+    </assembly>
+    <members>
+        <member name="T:MySQLDriverCS.MYSQL_FIELD">
+            <summary>
+            Field descriptor
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.name">
+            <summary>
+            Name of column 
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.table">
+            <summary>
+            Table of column if column was a field
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.def">
+            <summary>
+             Default value (set by mysql_list_fields) 
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.type">
+            <summary>
+            Type of field. Se mysql_com.h for types
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.length">
+            <summary>
+            Width of column
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.max_length">
+            <summary>
+            Max width of selected set
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.flags">
+            <summary>
+            Div flags
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MYSQL_FIELD.decimals">
+            <summary>
+            Number of decimals in field
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.CPrototypes">
+            <summary>
+            C prototypes warpper for mysqllib.
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLCommand">
+            <summary>
+            This class is IDbCommand compliant so take a look into MSDN help to unserstand how it works
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.#ctor">
+            <summary>Initializes a new instance of the MySQLCommand class.</summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.#ctor(System.String)">
+            <summary>Initializes a new instance of the MySQLCommand class with the text of the query.</summary>
+            <param name="cmdText"></param>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.#ctor(System.String,MySQLDriverCS.MySQLConnection)">
+            <summary>Initializes a new instance of the MySQLCommand class with the text of the query and a MySQLConnection.</summary>
+            <param name="cmdText"></param>
+            <param name="_connection"></param>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.#ctor(System.String,MySQLDriverCS.MySQLConnection,System.Data.IDbTransaction)">
+            <summary>Initializes a new instance of the MySQLCommand class with the text of the query, a MySQLConnection, and the IDbTransaction. 
+            </summary>
+            <param name="cmdText"></param>
+            <param name="connection"></param>
+            <param name="transaction"></param>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.Cancel">
+            <summary>
+            Multithreding operation: cancels current reading.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.CreateParameter">
+            <summary>
+            Operation not supported.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.ExecuteNonQuery">
+            <summary>
+            Executes a SQL statement against the Connection object, and returns updated rows count.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.ExecuteReaderEx">
+            <summary>
+            Executes the CommandText against the Connection and builds an MySQLDataReader.
+            </summary>
+            <returns>MySQLDataReader</returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.ExecuteReader">
+            <summary>
+            Overloaded. Executes the CommandText against the Connection and builds an IDataReader.
+            </summary>
+            <remarks>Use <c>ExecuteReaderEx</c> to avoid conversions.</remarks>
+            <returns>IDataReader</returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.ExecuteReader(System.Data.CommandBehavior)">
+            <summary>
+            Overloaded. Executes the CommandText against the Connection and builds an IDataReader.
+            </summary>
+            <param name="behavior">Don't care</param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.ExecuteScalar">
+            <summary>
+            Operation not supported.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.Prepare">
+            <summary>
+            Operation ignored.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLCommand.Dispose">
+            <summary>
+            Dispose command
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.CommandText">
+            <summary>
+            Gets or sets the text command to run against the data source.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.CommandTimeout">
+            <summary>
+            Gets or sets the wait time before terminating the attempt to execute a command and generating an error.
+            Set Is unsupported.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.CommandType">
+            <summary>
+            Indicates or specifies how the CommandText property is interpreted.
+            Allways set to CommandType.Text . Set Is unsupported.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.Connection">
+            <summary>
+            Gets or sets the IDbConnection used by this instance of the IDbCommand.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.Parameters">
+            <summary>
+            Operation not supported.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.Transaction">
+            <summary>
+            Sets and gets transaction
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLCommand.UpdatedRowSource">
+            <summary>
+            Operation not supported.
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLConnection">
+            <summary>
+            This class is IDbConnection compliant so take a look into MSDN help to understand how it works. 
+            </summary>
+            <remarks>All members are supported now (2002-10-28)</remarks>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.#ctor">
+            <summary>
+            Creates a connection
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.#ctor(System.String)">
+            <summary>
+            Creates a connection with a connection string
+            </summary>
+            <param name="cs"></param>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.Dispose">
+            <summary>
+            Dispose destructor
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Begins a transaction
+            </summary>
+            <param name="il"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.BeginTransaction">
+            <summary>
+            Begins a transaction
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.ChangeDatabase(System.String)">
+            <summary>
+            Changes database
+            </summary>
+            <param name="databaseName"></param>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.CreateCommand">
+            <summary>
+            Creates an empty command linked to this connection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.Open">
+            <summary>
+            Opens a database connection with the settings specified by the ConnectionString property of the provider-specific Connection object.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnection.Close">
+            <summary>
+            Closes the connection to the database.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLConnection.ConnectionString">
+            <summary>
+            Gets or sets the string used to open a database.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLConnection.Port">
+            <summary>
+            Gets the time to wait while trying to establish a connection before terminating the attempt and generating an error.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLConnection.ConnectionTimeout">
+            <summary>
+            Gets the time to wait while trying to establish a connection before terminating the attempt and generating an error.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLConnection.Database">
+            <summary>
+            Gets the name of the current database or the database to be used once a connection is open.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLConnection.State">
+            <summary>
+            Gets the current state of the connection.
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLException">
+            <summary>
+            Simple exception. Can show multiple messages in one message sepparated by CR/LF
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_message"></param>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLException.Message">
+            <summary>
+            Overload to show real message string
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLConnectionString">
+            <summary>
+            This utility class is used in order to make string connection writting easier.
+            </summary>
+            <example>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DBConn.Close();
+            </example>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLConnectionString.AsString">
+            <summary>
+            The connection string as a C# string.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnectionString.#ctor(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Constructor that takes the most important four arguments.
+            </summary>
+            <param name="server">The server name or IP.</param>
+            <param name="database">The database name.</param>
+            <param name="login">The login name.</param>
+            <param name="pass">The password.</param>
+            <param name="port">Port</param>
+            <example>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword",3306).AsString );
+            DBConn.Open();
+            ...
+            DBConn.Close();
+            </example>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnectionString.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor that takes the most important four arguments.
+            </summary>
+            <param name="server">The server name or IP.</param>
+            <param name="database">The database name.</param>
+            <param name="login">The login name.</param>
+            <param name="pass">The password.</param>
+            <example>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DBConn.Close();
+            </example>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnectionString.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor that takes database name, login, password and assumes localhost.
+            </summary>
+            <param name="database">The database name.</param>
+            <param name="login">The login name.</param>
+            <param name="pass">The password.</param>
+            <example>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DBConn.Close();
+            </example> 
+        </member>
+        <member name="M:MySQLDriverCS.MySQLConnectionString.Init(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            The real connection maker.
+            </summary>
+            <param name="server"></param>
+            <param name="database"></param>
+            <param name="login"></param>
+            <param name="pass"></param>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLDataReader">
+            <summary>
+            This class is IDataReader compliant so take a look into MSDN help to understand how it works
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.Dispose">
+            <summary>
+            Closes this reader
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.Close">
+            <summary>
+            Closes the MySQLDataReader 0bject.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetSchemaTable">
+            <summary>
+            Returns a DataTable that describes the column metadata of the MySQLDataReader and it's values.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.NextResult">
+            <summary>
+            Unsupported
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.Read">
+            <summary>
+            Advances the MySQLDataReader to the next record.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetBoolean(System.Int32)">
+            <summary>
+            Get as boolean
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetByte(System.Int32)">
+            <summary>
+            Get as byte
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <param name="fieldOffset"></param>
+            <param name="buffer"></param>
+            <param name="bufferoffset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetChar(System.Int32)">
+            <summary>
+            Get as char
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <param name="fieldoffset"></param>
+            <param name="buffer"></param>
+            <param name="bufferoffset"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetData(System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetDataTypeName(System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetDateTime(System.Int32)">
+            <summary>
+            Get as DateTime
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetDecimal(System.Int32)">
+            <summary>
+            Get as decimal
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetDouble(System.Int32)">
+            <summary>
+            Get as double
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetFieldType(System.Int32)">
+            <summary>
+            Get field type (class Type)
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetFloat(System.Int32)">
+            <summary>
+            Get as float
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetGuid(System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetInt16(System.Int32)">
+            <summary>
+            Get as Int16
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetInt32(System.Int32)">
+            <summary>
+            Get as Int32
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetInt64(System.Int32)">
+            <summary>
+            Get as Int64
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetName(System.Int32)">
+            <summary>
+            Get name of field by index
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetOrdinal(System.String)">
+            <summary>
+            Get index of field by name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetString(System.Int32)">
+            <summary>
+            Get as string
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetValue(System.Int32)">
+            <summary>
+            Get as object
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.GetValues(System.Object[])">
+            <summary>
+            Get full row as array of object
+            </summary>
+            <param name="values"></param>
+            <returns>Fields retrived, if it fails returns -1.</returns>
+            <remarks>
+            <list type="bullet">
+            <listheader><item><description>Bugfixed:</description></item></listheader>
+            <item><term>2002-10-28</term><description>Values was ignored</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDataReader.IsDBNull(System.Int32)">
+            <summary>
+            Unsupported
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.Depth">
+            <summary>
+            returns 1
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.IsClosed">
+            <summary>
+            Gets a value indicating whether the data reader is closed.
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.RecordsAffected">
+            <summary>
+            Gets the number of rows changed, inserted, or deleted by execution of the SQL statement.
+            </summary>
+            <remarks>The RecordsAffected property is not set until all rows are read and you close the MySQLDataReader.</remarks>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.FieldCount">
+            <summary>
+            Number of fields returned
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.Item(System.String)">
+            <summary>
+            Get value by name
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLDataReader.Item(System.Int32)">
+            <summary>
+            Get value by index
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLDeleteCommand">
+            <summary>
+            A shortcut to make a simple delete command.
+            </summary>
+            <example>Example:<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLDeleteCommand(DBConn,"Trash",null,null);
+            ...
+            DBConn.Close();
+            </code></example>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLDeleteCommand.bSuccess">
+            <summary>
+            This flags is true if operation was successful.
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLDeleteCommand.Query">
+            <summary>
+            The SQL string used for this command (useful for debugging).
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLDeleteCommand.#ctor(MySQLDriverCS.MySQLConnection,System.String,System.Object[0:,0:],System.String[0:,0:])">
+            <summary>
+            Construct and Run a simple delete command.
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="Table">Table name</param>
+            <param name="WhereParamFields">Tripplets of parameters, operand and its values to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=",myvalue},{"myfield2","&lt;&gt;",myvalue2}}
+             
+            new object[,]{{"myfield","=",100}}
+             
+            new object[,]{{"myfield","=",myvalue}}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereNoparamFields">Tripplets of parameters, operand and expressions (or other fields for joining) to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=","myfield2"}}
+            
+            null
+            </code>
+            </param>
+            <example>Example:<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLDeleteCommand(
+            	DBConn,
+            	"Trash",
+            	new object[,]{{"myfield","=",myvalue}},
+            	new object[,]{{"myfield","=","myfield2"}}
+            	);
+            ...
+            new MySQLDeleteCommand(
+            	DBConn,
+            	"Trash",
+            	new object[,]{{"myfield2","=",myvalue2},{"myfield3","&lt;&gt;",myvalue3}},
+            	null
+            	);
+            ...
+            DBConn.Close();
+            </code></example> 
+        </member>
+        <member name="T:MySQLDriverCS.MySQLInsertCommand">
+            <summary>A shortcut to make a simple insert command.</summary>
+            <example>Example:
+            <code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLInsertCommand(
+            	DBConn,
+            	new object[,] {
+            		{"SettingID",SettingID},
+            		{"SettingValue",Value}
+            	},
+            	"Settings"
+            );
+            ...
+            DBConn.Close();
+            </code></example>
+            
+        </member>
+        <member name="F:MySQLDriverCS.MySQLInsertCommand.bSuccess">
+            <summary>
+            This flags is true if operation was successful.
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLInsertCommand.Query">
+            <summary>
+            The SQL string used for this command (useful for debugging).
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLInsertCommand.#ctor(MySQLDriverCS.MySQLConnection,System.Object[0:,0:],System.String)">
+            <summary>
+            Construct and Run a simple insert command.
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="FieldsAndValues">Pairs of Fields and values as an object array. Examples:
+            <code>
+            new object[,]{{"SettingID",SettingID},{"SettingValue",Value}}
+            
+            new object[,]{{"SettingID","times"},{"SettingValue",100}}
+            
+            null
+            </code>
+            </param>
+            <param name="Table">Table name</param>
+            <example>Example:
+            <code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLInsertCommand(
+            	DBConn,
+            	new object[,] {
+            		{"SettingID",SettingID},
+            		{"SettingValue",Value}
+            	},
+            	"Settings"
+            );
+            ...
+            DBConn.Close();
+            </code></example>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLSelectCommand">
+            <summary>
+            A shortcut to make a simple select command.
+            </summary>
+            <example>Example looking for SettingValue by SettingID<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DataTable dt = new MySQLSelectCommand(DBConn,
+            	new string[] {"SettingID","SettingValue"},
+            	new string[] {"Settings"},
+            	new object[,] {{"SettingID","=",SettingID}},
+            	null,
+            	null
+            ).Table;
+            string Value = null;
+            if(dt.Rows.Count!=0)
+            {
+            	Value = dt.Rows[0]["SettingValue] as string;
+            }
+            else
+            {
+            	// Value not found
+            }
+            ...
+            DBConn.Close();
+            </code></example>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLSelectCommand.Table">
+            <summary>
+            The full result rowset as a DataTable
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLSelectCommand.#ctor(MySQLDriverCS.MySQLConnection,System.String[],System.String[],System.Object[0:,0:],System.String[0:,0:],System.String[0:,0:])">
+            <summary>
+            A shortcut to make a simple select command with where and sorting part. (where and sorting would be null)
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="Tables">An array of table names as strings. Examples:
+            <code>
+            new string[]{"trash","users"}
+            
+            new string[]{"trash",users}
+            
+            new string[]{"trash"}
+            
+            null
+            </code>
+            </param>
+            <param name="Fields">An array of field names (or expressions) as strings. Examples:
+            <code>
+            new string[]{"id","name"}
+            
+            new string[]{"id",name}
+            
+            new string[]{"id"}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereParamFields">Tripplets of parameters, operand and its values to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=",myvalue},{"myfield2","&lt;&gt;",myvalue2}}
+             
+            new object[,]{{"myfield","=",100}}
+             
+            new object[,]{{"myfield","=",myvalue}}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereNoparamFields">Tripplets of parameters, operand and expressions (or other fields for joining) to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=","myfield2"}}
+            
+            null
+            </code>
+            </param>
+            <param name="Sorting">Pairs of {field,sorttype} as an string array. For example:
+            <code>
+            new string[] {{"SettingID","ASC"},{"SettingValue","DESC"}}
+            
+            new string[] {{"SettingID","ASC"}}
+            
+            null
+            </code></param>
+            <example>Example looking for SettingValue by SettingID<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DataTable dt = new MySQLSelectCommand(DBConn,
+            	new string[] {"SettingID","SettingValue"},
+            	new string[] {"Settings"},
+            	new object[,] {{"SettingID","=",SettingID}},
+            	null,
+            	null
+            ).Table;
+            string Value = null;
+            if(dt.Rows.Count!=0)
+            {
+            	Value = dt.Rows[0]["SettingValue] as string;
+            }
+            else
+            {
+            	// Value not found
+            }
+            ...
+            DBConn.Close();
+            </code></example>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLSelectCommand.#ctor(MySQLDriverCS.MySQLConnection,System.String[],System.String[],System.Object[0:,0:],System.String[0:,0:],System.String[0:,0:],System.Boolean,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            A shortcut to make a simple select command with where, sorting part, and limit usage. (where and sorting would be null, and limits false)
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="Tables">An array of table names as strings. Examples:
+            <code>
+            new string[]{"trash","users"}
+            
+            new string[]{"trash",users}
+            
+            new string[]{"trash"}
+            
+            null
+            </code>
+            </param>
+            <param name="Fields">An array of field names (or expressions) as strings. Examples:
+            <code>
+            new string[]{"id","name"}
+            
+            new string[]{"id",name}
+            
+            new string[]{"id"}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereParamFields">Tripplets of parameters, operand and its values to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=",myvalue},{"myfield2","&lt;&gt;",myvalue2}}
+             
+            new object[,]{{"myfield","=",100}}
+             
+            new object[,]{{"myfield","=",myvalue}}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereNoparamFields">Tripplets of parameters, operand and expressions (or other fields for joining) to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=","myfield2"}}
+            
+            null
+            </code>
+            </param>
+            <param name="Sorting">Pairs of {field,sorttype} as an string array. For example:
+            <code>
+            new string[] {{"SettingID","ASC"},{"SettingValue","DESC"}}
+            
+            new string[] {{"SettingID","ASC"}}
+            
+            null
+            </code></param>
+            <param name="useLimits">True if using limits</param>
+            <param name="limitStartRow">Start row number, 0 by default</param>
+            <param name="limitRows">How many rows are show (maximun). Use <code>MySQLSelectCommand(..,true,0,1)</code> for expecting one value.</param>
+            <param name="Distinct">Distinct is active</param>
+            <example>Example looking for SettingValue by SettingID<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            DataTable dt = new MySQLSelectCommand(DBConn,
+            	new string[] {"SettingID","SettingValue"},
+            	new string[] {"Settings"},
+            	new object[,] {{"SettingID","=",SettingID}},
+            	null,
+            	null
+            ).Table;
+            string Value = null;
+            if(dt.Rows.Count!=0)
+            {
+            	Value = dt.Rows[0]["SettingValue] as string;
+            }
+            else
+            {
+            	// Value not found
+            }
+            ...
+            DBConn.Close();
+            </code></example>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLSelectCommand.#ctor(MySQLDriverCS.MySQLConnection,System.String,System.String[0:,0:],System.String[],System.String[],System.Object[0:,0:],System.String[0:,0:],System.String[],System.Object[0:,0:],System.String[0:,0:],System.String[],System.Int32[],System.String)">
+            <summary>
+            Extended SELECT with all settings (Except INTO OUTFILE/DUMPFILE for security reasons)
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="PrevFlags">Flags used in SELECT: [STRAIGHT_JOIN] [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT] [SQL_CACHE | SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS] [HIGH_PRIORITY] [DISTINCT | DISTINCTROW | ALL]</param>
+            <param name="FieldsAndAlias">fields like {{"f1"},{"f2"}} or {{"f1","aliasf1"},...}</param>
+            <param name="FieldsTitles">If it's null they're retrieved from FieldsAndAlias. Useful for re-aliasing and required if you use AS or explicit index using.</param>
+            <param name="Tables">Table list</param>
+            <param name="WhereValues">Like {{field,op,value}...}</param>
+            <param name="WhereExpressions">Like {{expr1,op,expr2}}</param>
+            <param name="GroupBy">Like {{field}...} or {{field,ASC|DESC}...}</param>
+            <param name="GroupByHavingValues">like {{field,op,value}...}</param>
+            <param name="GroupByHavingExpressions">Like {expr1,expr2}</param>
+            <param name="OrderBy">Like {{field}...} or {{field,ASC|DESC}...}</param>
+            <param name="Limit">Like null, new int[]{}, new int{a number} (rows), or pair of numbers new int[]{offset,rows}</param>
+            <param name="LastFlags">this includes PROCEDURE, FOR UPDATE and LOCK IN SHARE MODE</param>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLTransaction">
+            <summary>
+            Transaction control in MySQL
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLTransaction.Commit">
+            <summary>
+            Performs a commit
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLTransaction.Rollback">
+            <summary>
+            Performs a rollback
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLTransaction.Dispose">
+            <summary>
+            Dispose destructor
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLTransaction.Connection">
+            <summary>
+            Connection property
+            </summary>
+        </member>
+        <member name="P:MySQLDriverCS.MySQLTransaction.IsolationLevel">
+            <summary>
+            Isolation level property
+            </summary>
+        </member>
+        <member name="T:MySQLDriverCS.MySQLUpdateCommand">
+            <summary>
+            A shortcut to make a simple update command.
+            </summary>
+            <example>Example updating SettingValue by SettingID in Settings table<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLUpdateCommand(DBConn,
+            	new object[,] {{"SettingValue",Value}},
+            	"Settings",
+            	new object[,] {{"SettingID","=",SettingID}},
+            	null
+            );
+            ...
+            DBConn.Close();
+            </code></example> 
+        </member>
+        <member name="F:MySQLDriverCS.MySQLUpdateCommand.bSuccess">
+            <summary>
+            This flags is true if operation was successful.
+            </summary>
+        </member>
+        <member name="F:MySQLDriverCS.MySQLUpdateCommand.Query">
+            <summary>
+            The SQL string used for this command (useful for debugging).
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLUpdateCommand.#ctor(MySQLDriverCS.MySQLConnection,System.Object[0:,0:],System.String,System.Object[0:,0:],System.String[0:,0:])">
+            <summary>
+             A shortcut to make a simple update command with where part. (where would be null)
+            </summary>
+            <param name="conn">Database connection</param>
+            <param name="FieldsAndValues">Pairs of Fields and values as an object array. Examples:
+            <code>
+            new object[,]{{"SettingID",SettingID},{"SettingValue",Value}}
+            
+            new object[,]{{"SettingID","times"},{"SettingValue",100}}
+            
+            null
+            </code>
+            </param>
+            <param name="Table">Table name</param>
+            <param name="WhereParamFields">Tripplets of parameters, operand and its values to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=",myvalue},{"myfield2","&lt;&gt;",myvalue2}}
+             
+            new object[,]{{"myfield","=",100}}
+             
+            new object[,]{{"myfield","=",myvalue}}
+            
+            null
+            </code>
+            </param>
+            <param name="WhereNoparamFields">Tripplets of parameters, operand and expressions (or other fields for joining) to match (null - nothing). For example: 
+            <code>
+            new object[,]{{"myfield","=","myfield2"}}
+            
+            null
+            </code>
+            </param>
+            <example>Example updating SettingValue by SettingID in Settings table<code>
+            using MySQLDriverCS;
+            ...
+            MySQLConnection DBConn;
+            DBConn = new MySQLConnection( new MySQLConnectionString("myhost","mydatabase","mylogin","mypassword").AsString );
+            DBConn.Open();
+            ...
+            new MySQLUpdateCommand(DBConn,
+            	new object[,] {{"SettingValue",Value}},
+            	"Settings",
+            	new object[,] {{"SettingID","=",SettingID}},
+            	null
+            );
+            ...
+            DBConn.Close();
+            </code></example> 
+        </member>
+        <member name="T:MySQLDriverCS.MySQLUtils">
+            <summary>
+            Various static functions to help MySQLDriverCS engime.
+            </summary>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLUtils.Escape(System.String)">
+            <summary>
+            Escapes characters to make a MySQL readable query.
+            </summary>
+            <param name="str">The string to translate</param>
+            <returns>The quoted escaped string</returns>
+        </member>
+        <member name="M:MySQLDriverCS.MySQLUtils.HTMLEscapeSpecialCharacters(System.String)">
+            <summary>
+            Escapes characters in html way but without altering text that may be in tags, that is less-than, more-than, ampersand, space, doublequote, filter simbols.
+            </summary>
+            <param name="strIn">The string to translate</param>
+            <returns>The translated string</returns>
+        </member>
+    </members>
+</doc>

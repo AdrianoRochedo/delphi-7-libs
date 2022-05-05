@@ -1,0 +1,33 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = Roc_Components.bpl PascalScript.bpl PascalScriptEditor.bpl \
+  Roc_Base.bpl DB_PLUS.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+Roc_Components.bpl: Roc_Components.dpk
+  $(DCC)
+
+PascalScript.bpl: PascalScript.dpk
+  $(DCC)
+
+PascalScriptEditor.bpl: PascalScriptEditor.dpk
+  $(DCC)
+
+Roc_Base.bpl: Roc_Base.dpk
+  $(DCC)
+
+DB_PLUS.bpl: DB_PLUS.dpk
+  $(DCC)
+
+

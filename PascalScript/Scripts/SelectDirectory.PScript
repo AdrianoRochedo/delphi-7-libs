@@ -1,0 +1,9 @@
+Program Teste_SelectDirectory;
+var s: String;
+    b: boolean;
+begin
+  b := SelectDirectory('Selecione um Diretório', 'd:\', s);
+  if b then
+     showMessage('O diretório escolhido foi: ' + #13 + s);
+end.
+ 
